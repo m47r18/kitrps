@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit d'accompagnement humain et de prévention des RPS</title>
+<link rel="stylesheet" href="kit-rps.css">
+</head>
+<body>
+<a class="skip-link" href="#vue">Aller au contenu principal</a>
+<p class="proto" role="note">Prototype</p>
+
+<header class="site">
+  <a class="brand" href="#/" aria-label="Accueil du kit">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4.5-3.2-8-6.2-8-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 3.8-3.5 6.8-8 10z" opacity=".35"/><path d="M4 12h4l2-4 3 7 2-3h5"/></svg>
+    <h1>Kit d'accompagnement humain<br>et de prévention des RPS</h1>
+  </a>
+  <div class="toolbar" role="group" aria-label="Sauvegarde">
+    <button type="button" id="btn-export">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>
+      Exporter mes notes
+    </button>
+    <button type="button" id="btn-import">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 15V3m0 0 4 4m-4-4L8 7M4 17v3h16v-3"/></svg>
+      Importer
+    </button>
+    <input type="file" id="file-import" accept="application/json" class="visually-hidden" aria-hidden="true" tabindex="-1">
+  </div>
+</header>
+
+<nav class="crumbs" aria-label="Fil d'Ariane"><ol id="crumbs"></ol></nav>
+
+<main id="vue" tabindex="-1" aria-live="polite"></main>
+
+<footer class="site">
+  Kit unique pour toutes les sociétés du groupe — managers (DET, DUO, DPX), chefs et porteurs de projets, acteurs RH et préventeurs.
+</footer>
+
+<script src="kit-rps.js" defer></script>
+</body>
+</html>
