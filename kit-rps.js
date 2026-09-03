@@ -592,13 +592,7 @@ function ptsList(clId,cl){
 const VUES={
   "":{titre:"Accueil",crumbs:[],render:()=>`
     <div class="home-shell">
-      <div class="home-intro">
-        <div><p class="eyebrow">Kit pratique · prévention des RPS</p>
-        <h2 class="page">Agir sur l'humain, dès le début.</h2>
-        <p class="lead">Les bonnes questions à se poser pour accompagner un projet, prendre soin du collectif et trouver rapidement les bons relais.</p></div>
-        <aside class="home-aside"><strong>3</strong> parcours pour passer de l'intention à l'action.</aside>
-      </div>
-      <p class="section-label">Par où commencer ?</p>
+      <h2 class="page home-title">Bienvenue, quel est votre besoin ?</h2>
     <div class="grid g2">
       <a class="brique bleu" href="#/projet"><img class="brique-illus" src="img/besoinProjet.png" alt="" aria-hidden="true"><span class="ico">${ICO.boussole}</span>
         <h3>J'ai besoin d'intégrer les facteurs humains en amont et pendant le projet</h3>
