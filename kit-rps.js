@@ -249,15 +249,14 @@ const P2 = {
     intro:"En tant que manager, vous êtes accompagné par des interlocuteurs spécialisés pour la gestion des situations difficiles. Vous pouvez également vous questionner sur les points suivants, dans les limites de votre rôle de manager et de vos responsabilités face à la situation.",
     pts:["Est-ce que je suis à l'écoute de mes émotions et de mes besoins face à la situation de RPS ?",
          "Est-ce que je connais mon périmètre d'intervention dans cette situation en tant que manager (rester dans l'empathie…) ?",
-         "Est-ce que j'ai besoin de déléguer et/ou d'être aidé, et par qui (préventeur, RH, ligne managériale, Action Sociale, médecine du travail, cellule de soutien psychologique…) ?",
+         "Est-ce que j'ai besoin de déléguer et/ou d'être aidé, et par qui (préventeur, RH, ligne managériale, action sociale, médecine du travail, cellule de soutien psychologique…) ?",
          "Comment sécuriser le reste de l'équipe ?",
          "Comment communiquer auprès du reste de l'équipe (être présent, être accompagné d'un collègue…) ?",
          "Comment communiquer auprès des IRP (quelle obligation d'information, qui informer…) ?",
          "Comment accompagner l'agent en souffrance liée à une situation RPS avérée ?",
          "Comment accompagner l'équipe en cas d'événement grave ?",
-         "Comment accompagner la poursuite ou le retour au travail des agents ayant eu une situation RPS ?",
-         "Identifier son propre état vis-à-vis de la situation et connaître les attitudes à éviter (vouloir solutionner, être dans la sympathie…)",
-         "Détecter les situations professionnelles et personnelles à risque, savoir évaluer la cause et le degré de risque (évaluation RPS) et prendre des décisions"]},
+         "Comment accompagner la poursuite ou le retour au travail des agents ayant eu une situation RPS ?"],
+    noCheck:true},
   ressources:{titre:"Ressources complémentaires",ico:"doc",
     intro:"Les ressources à votre disposition pour la prévention et l'accompagnement des RPS au quotidien.",
     res:["charge","etoile","formation","relais","boiteIdees"]}
@@ -812,7 +811,7 @@ function render(){
     const s=P2[mP2[1]];titre=s.titre;crumbs=[["#/","Accueil"],["#/rps","RPS au quotidien"]];
     const noteId=`note-rps-${mP2[1]}`;
     html=stepperHtml(STEPPER_RPS,mP2[1])+`<h2 class="page">${s.titre}</h2><p class="lead">${s.intro}</p>
-      ${s.pts?`<section class="bloc"><div class="bloc-head"><h3>${ICO.check} Les points essentiels</h3><a class="detail" href="#/rps/ressources">${ICO.loupeMini} Pour aller plus loin</a></div>${rpsPtsList(mP2[1],s)}</section>`:""}
+      ${s.pts?`<section class="bloc"><div class="bloc-head"><h3>${ICO.check} Les points essentiels</h3><a class="detail" href="#/rps/ressources">${ICO.loupeMini} Pour aller plus loin</a></div>${s.noCheck?`<ul class="q">${s.pts.map(p=>`<li>${p}</li>`).join("")}</ul>`:rpsPtsList(mP2[1],s)}</section>`:""}
       ${s.res?resTable(s.res):""}
       <section class="bloc"><h3>${ICO.crayon} Zone de texte libre</h3>
         ${zone(noteId,"Vos notes (sauvegardées automatiquement dans ce navigateur) :")}</section>
