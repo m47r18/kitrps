@@ -105,10 +105,13 @@ a.brique{display:flex;flex-direction:column;gap:.7rem;background:var(--c-carte);
 a.brique .brique-illus{position:absolute;right:.6rem;top:.4rem;height:76px;width:auto;opacity:.92;pointer-events:none}
 a.brique:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,56,101,.16)}
 a.brique .ico{width:52px;height:52px;border-radius:4px;background:var(--c-accent-clair);display:grid;place-items:center;color:var(--c-accent)}
-a.brique.bleu .ico{background:var(--c-tonal);color:var(--c-primaire)}
+/* Cartes de choix internes à un parcours (§6.3) : suivent la couleur du parcours actif plutôt qu'un bleu fixe */
+a.brique.bleu{border-color:var(--c-parcours)}
+a.brique.bleu .ico{background:var(--c-parcours-clair);color:var(--c-parcours)}
 a.brique h3{font-size:1.15rem;font-weight:600;color:var(--c-primaire);line-height:1.3}
 a.brique p{font-size:.92rem;color:var(--c-texte-2)}
 a.brique .cta{margin-top:auto;font-size:.85rem;font-weight:600;color:var(--c-accent)}
+a.brique.bleu .cta,a.brique.brique-projet .cta,a.brique.brique-rps .cta{color:var(--c-parcours)}
 /* ---------- Liste de points de checklist ---------- */
 ul.pts{list-style:none;display:flex;flex-direction:column;gap:.8rem}
 li.pt{background:var(--c-carte);border:1px solid #D0D3D4;border-left:4px solid var(--c-parcours);border-radius:4px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;box-shadow:0 2px 6px rgba(0,56,101,.06)}
