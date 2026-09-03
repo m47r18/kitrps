@@ -615,6 +615,23 @@ function ptsList(clId,cl){
     <section class="bloc" style="margin-top:1.2rem"><h3>${ICO.crayon} Notes générales sur cette checklist</h3>
       ${zone(`cl-${clId}-notes`,"Vos observations générales sur cette checklist (sauvegardées automatiquement dans ce navigateur) :")}</section>`;
 }
+/* Checklist à cocher (même logique que ptsList) pour les points essentiels des pages RPS, dont les items sont de simples libellés sans sous-page dédiée. */
+function rpsPtsList(sectionId,s){
+  const total=s.pts.length;
+  const done=s.pts.filter((_,i)=>getChk(`rps-${sectionId}-${i}`)===2).length;
+  const pct=Math.round(done/total*100);
+  const lis=s.pts.map((p,i)=>{
+    const id=`rps-${sectionId}-${i}`,lvl=getChk(id);
+    return `<li class="pt${lvl===2?" done":""}${lvl===1?" inprogress":""}">
+      ${triCtrl(id,p)}
+      <span class="t">${p}</span>
+    </li>`;
+  }).join("");
+  return `<div class="progress"><strong>${done} / ${total}</strong> points traités
+      <div class="bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Avancement de la checklist"><div style="width:${pct}%"></div></div>
+    </div>
+    <ul class="pts">${lis}</ul>`;
+}
 
 /* =====================================================================
    VUES
@@ -791,7 +808,7 @@ function render(){
     const s=P2[mP2[1]];titre=s.titre;crumbs=[["#/","Accueil"],["#/rps","RPS au quotidien"]];
     const noteId=`note-rps-${mP2[1]}`;
     html=stepperHtml(STEPPER_RPS,mP2[1])+`<h2 class="page">${s.titre}</h2><p class="lead">${s.intro}</p>
-      ${s.pts?`<section class="bloc"><div class="bloc-head"><h3>${ICO.check} Les points essentiels</h3><a class="detail" href="#/rps/ressources">${ICO.loupeMini} Pour aller plus loin</a></div><ul class="q">${s.pts.map(p=>`<li>${p}</li>`).join("")}</ul></section>`:""}
+      ${s.pts?`<section class="bloc"><div class="bloc-head"><h3>${ICO.check} Les points essentiels</h3><a class="detail" href="#/rps/ressources">${ICO.loupeMini} Pour aller plus loin</a></div>${rpsPtsList(mP2[1],s)}</section>`:""}
       ${s.res?resTable(s.res):""}
       <section class="bloc"><h3>${ICO.crayon} Zone de texte libre</h3>
         ${zone(noteId,"Vos notes (sauvegardées automatiquement dans ce navigateur) :")}</section>
