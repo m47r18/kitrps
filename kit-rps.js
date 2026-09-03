@@ -654,9 +654,9 @@ const VUES={
       <a class="brique bleu" href="#/projet/essentiel"><img class="brique-illus" src="img/besoinProjetModeste.png" alt="" aria-hidden="true"><span class="ico">${ICO.boussole}</span>
         <h3>J'ai un projet plus modeste</h3><p>Je veux aller à l'essentiel et identifier les incontournables.</p>
         <span class="cta">Voir l'essentiel →</span></a>
-      <a class="brique bleu" href="#/sommaire"><img class="brique-illus" src="img/besoinProjetExplorer.png" alt="" aria-hidden="true"><span class="ico">${ICO.loupe}</span>
+      <a class="brique bleu" href="#/projet/checklists"><img class="brique-illus" src="img/besoinProjetExplorer.png" alt="" aria-hidden="true"><span class="ico">${ICO.loupe}</span>
         <h3>Je veux explorer</h3><p>Je veux naviguer librement pour trouver les informations qui m'aident.</p>
-        <span class="cta">Voir le sommaire →</span></a>
+        <span class="cta">Voir les 3 checklists →</span></a>
     </div>
     <div class="bloc" style="margin-top:1.4rem">
       <h3>${ICO.q} À savoir</h3>
