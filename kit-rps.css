@@ -171,6 +171,8 @@ footer.site p{margin:0 0 .9rem}
 /* ---------- En-tête d'un point de checklist ---------- */
 .item-head{background:var(--c-parcours-clair);border-radius:var(--r);padding:1.2rem 1.4rem;margin:1.2rem 0 1.4rem;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
 .item-head h2.page{margin:0}
+/* ---------- Séparateur entre points regroupés sur une même page ---------- */
+.item-sep{border:none;border-top:2px dashed #D0D3D4;margin:1.8rem 0}
 /* ---------- Carte « questions à se poser » (fond plein, cf. maquette) ---------- */
 .quest-card{background:var(--c-parcours);color:#fff}
 .quest-card h3,.quest-card h3 svg{color:#fff}

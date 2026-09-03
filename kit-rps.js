@@ -566,6 +566,31 @@ function resTable(ids){
       <tbody>${rows}</tbody></table></div>
   </section>`;
 }
+/* Regroupements de points d'une checklist affichés sur une même page,
+   quand la maquette PPTX ne consacre pas de diapositive dédiée à chacun
+   (ex. « moi » : les points 1 et 2 partagent une seule page, slides 17-18). */
+const ITEM_GROUPS={moi:[[0,1],[2],[3],[4]]};
+function itemGroup(clId,i){
+  const g=(ITEM_GROUPS[clId]||[]).find(g=>g.includes(i));
+  return g||[i];
+}
+function itemBlock(clId,i){
+  const cl=CL[clId],it=cl.items[i];
+  const noteId=`note-${clId}-${i}`,statusId=`${clId}-${i}`,rev=getRevised(statusId);
+  const questions=`<section class="bloc quest-card"><h3>${ICO.q} Les questions à se poser</h3>
+      <ul class="q">${it.q.map(q=>`<li>${q}</li>`).join("")}</ul></section>`;
+  const notes=`<section class="bloc"><h3>${ICO.crayon} Zone de texte libre</h3>
+      ${zone(noteId,"Vos notes sur ce point (sauvegardées automatiquement dans ce navigateur) :")}</section>`;
+  const corps=it.res.length
+    ? `<div class="cols">${questions}<div style="display:flex;flex-direction:column;gap:1.1rem">${resTable(it.res)}${notes}</div></div>`
+    : `${questions}${notes}`;
+  return `<div class="item-head"><h2 class="page">${it.t}</h2><span class="time time-ico">${ICO.sablier} ${it.time}</span></div>
+    ${corps}
+    <div class="bloc item-status">
+      ${triCtrl(statusId,it.t)}
+      <span>${rev?`Révisé le ${rev}`:"Statut non renseigné pour l'instant"}</span>
+    </div>`;
+}
 function ptsList(clId,cl){
   const total=cl.items.length;
   const done=cl.items.filter((_,i)=>getChk(`${clId}-${i}`)===2).length;
@@ -709,23 +734,10 @@ function render(){
     html=stepperHtml(STEPPER_PROJET,"cl-"+mCl[1])+`<h2 class="page">${cl.titre}</h2><p class="lead">${cl.sousTitre}</p>
       ${ptsList(mCl[1],cl)}${retour("#/projet/checklists","Retour aux checklists")}`;
   }else if(mIt&&CL[mIt[1]]&&CL[mIt[1]].items[+mIt[2]]){
-    const clId=mIt[1],i=+mIt[2],cl=CL[clId],it=cl.items[i];
-    titre=it.t;crumbs=[["#/","Accueil"],["#/projet","Facteurs humains projet"],[`#/cl/${clId}`,cl.titre]];
-    const noteId=`note-${clId}-${i}`,statusId=`${clId}-${i}`,rev=getRevised(statusId);
-    const questions=`<section class="bloc quest-card"><h3>${ICO.q} Les questions à se poser</h3>
-        <ul class="q">${it.q.map(q=>`<li>${q}</li>`).join("")}</ul></section>`;
-    const notes=`<section class="bloc"><h3>${ICO.crayon} Zone de texte libre</h3>
-        ${zone(noteId,"Vos notes sur ce point (sauvegardées automatiquement dans ce navigateur) :")}</section>`;
-    const corps=it.res.length
-      ? `<div class="cols">${questions}<div style="display:flex;flex-direction:column;gap:1.1rem">${resTable(it.res)}${notes}</div></div>`
-      : `${questions}${notes}`;
-    html=stepperHtml(STEPPER_PROJET,"res-"+clId)+`<div class="item-head"><h2 class="page">${it.t}</h2><span class="time time-ico">${ICO.sablier} ${it.time}</span></div>
-      ${corps}
-      <div class="bloc item-status">
-        ${triCtrl(statusId,it.t)}
-        <span>${rev?`Révisé le ${rev}`:"Statut non renseigné pour l'instant"}</span>
-      </div>
-      ${retour(`#/cl/${clId}`,"Retour à la checklist")}`;
+    const clId=mIt[1],i=+mIt[2],cl=CL[clId],group=itemGroup(clId,i);
+    titre=cl.items[group[0]].t;crumbs=[["#/","Accueil"],["#/projet","Facteurs humains projet"],[`#/cl/${clId}`,cl.titre]];
+    const blocks=group.map(idx=>itemBlock(clId,idx)).join(`<hr class="item-sep">`);
+    html=stepperHtml(STEPPER_PROJET,"res-"+clId)+blocks+retour(`#/cl/${clId}`,"Retour à la checklist");
   }else if(mP2&&P2[mP2[1]]){
     const s=P2[mP2[1]];titre=s.titre;crumbs=[["#/","Accueil"],["#/rps","RPS au quotidien"]];
     const noteId=`note-rps-${mP2[1]}`;
