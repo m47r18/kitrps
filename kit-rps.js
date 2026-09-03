@@ -885,5 +885,21 @@ $file.addEventListener("change",()=>{
   r.readAsText(f);$file.value="";
 });
 
+/* Mode sombre / clair */
+const THEME_KEY="kit-rps-theme";
+const $btnTheme=document.getElementById("btn-theme");
+function applyTheme(t){
+  document.body.classList.toggle("dark",t==="dark");
+  $btnTheme.setAttribute("aria-pressed",t==="dark"?"true":"false");
+  $btnTheme.querySelector(".theme-label").textContent=t==="dark"?"Mode clair":"Mode sombre";
+}
+let theme=localStorage.getItem(THEME_KEY)||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+applyTheme(theme);
+$btnTheme.addEventListener("click",()=>{
+  theme=theme==="dark"?"light":"dark";
+  localStorage.setItem(THEME_KEY,theme);
+  applyTheme(theme);
+});
+
 window.addEventListener("hashchange",render);
 render();

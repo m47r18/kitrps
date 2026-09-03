@@ -27,6 +27,7 @@
   /* Alias produit — mappage vers la palette officielle (design-system-v2.md §3.3) */
   --c-primaire:var(--sncf-cobalt);   /* dark blue générique : en-tête, pied de page, titraille neutre */
   --c-primaire-90:#005A91;
+  --c-primaire-txt:var(--c-primaire);  /* alias pour la titraille/liens : reste identique en clair, éclairci en mode sombre */
   --c-accent:var(--sncf-ceruleen);   /* accent neutre : accueil, sommaire, fiches transverses */
   --c-accent-clair:color-mix(in srgb, var(--sncf-bleu-horizon) 25%, white);
   --c-fond:color-mix(in srgb, var(--color-gris-fond) 55%, white);
@@ -54,6 +55,25 @@
 }
 body.theme-projet{--c-parcours:var(--sncf-menthe);--c-parcours-clair:var(--tint-p1);--c-parcours-foncee:var(--sncf-foret)}
 body.theme-rps{--c-parcours:var(--sncf-bleu-marine);--c-parcours-clair:var(--tint-p2);--c-parcours-foncee:var(--sncf-bleu-marine)}
+/* ---------- Mode sombre (toggle en en-tête, préférence mémorisée) ---------- */
+body.dark{
+  --color-gris-fond:#20242B;
+  --color-text:#E6E8EC;
+  --c-fond:#14171B;
+  --c-carte:#20242B;
+  --c-tonal:#2A2F38;
+  --c-tonal-2:#343B46;
+  --c-texte:#E6E8EC;
+  --c-texte-2:#A6ADBB;
+  --c-accent-clair:#28374A;
+  --tint-p1:#1B3A33;
+  --tint-p2:#1C2E42;
+  --tint-ambre:#3A331C;
+  --c-primaire-txt:var(--sncf-ceruleen);  /* le cobalt sombre est illisible sur fond sombre */
+}
+body.dark{background:linear-gradient(135deg,var(--c-fond) 0%,#1A1D22 55%,var(--c-tonal) 100%)}
+body.dark .bloc,body.dark .item-sep{border-color:#3A4049}
+body.dark button.tri{background:var(--c-carte)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
@@ -75,6 +95,11 @@ header.site h1{flex:1 1 auto;font-size:clamp(1.1rem,2.6vw,1.9rem);font-weight:70
 .header-right{display:flex;align-items:center;gap:.8rem;flex:none}
 .info-link{display:flex;align-items:center;gap:.35rem;color:#fff;text-decoration:none;font-size:.85rem;font-weight:600;opacity:.9;border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:.35rem .8rem}
 .info-link:hover{opacity:1;background:rgba(255,255,255,.12)}
+.theme-toggle{display:flex;align-items:center;gap:.35rem;color:#fff;background:none;text-decoration:none;font:inherit;font-size:.85rem;font-weight:600;opacity:.9;border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:.35rem .8rem;cursor:pointer}
+.theme-toggle:hover{opacity:1;background:rgba(255,255,255,.12)}
+.theme-toggle .ico-sun{display:none}
+body.dark .theme-toggle .ico-moon{display:none}
+body.dark .theme-toggle .ico-sun{display:block}
 /* Bandeau prototype, imbriqué dans l'en-tête */
 .proto{background:var(--c-proto);color:#fff;font-weight:700;letter-spacing:.1em;padding:.35rem .9rem;font-size:1.1rem;text-transform:uppercase;border-radius:4px;flex:none}
 .toolbar{display:flex;gap:.5rem;flex-wrap:wrap}
@@ -85,13 +110,13 @@ header.site h1{flex:1 1 auto;font-size:clamp(1.1rem,2.6vw,1.9rem);font-weight:70
 nav.crumbs{padding:1rem clamp(1rem,4vw,3.5rem);font-size:.8rem;max-width:1280px;margin:auto}
 nav.crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
 nav.crumbs li+li::before{content:"›";margin-right:.35rem;color:var(--c-texte-2)}
-nav.crumbs a{color:var(--c-primaire);text-decoration:none;font-weight:500}
+nav.crumbs a{color:var(--c-primaire-txt);text-decoration:none;font-weight:500}
 nav.crumbs a:hover{text-decoration:underline}
 nav.crumbs [aria-current]{color:var(--c-texte-2)}
 /* ---------- Structure ---------- */
 main{max-width:1280px;margin:0 auto;padding:0 clamp(1rem,4vw,3.5rem) 5rem}
 main:focus,main:focus-visible{outline:none}
-h2.page{font-family:var(--font-main);font-size:clamp(1.9rem,4vw,3.4rem);font-weight:700;color:var(--c-primaire);margin:.4rem 0 1rem;line-height:1.08;max-width:19ch}
+h2.page{font-family:var(--font-main);font-size:clamp(1.9rem,4vw,3.4rem);font-weight:700;color:var(--c-primaire-txt);margin:.4rem 0 1rem;line-height:1.08;max-width:19ch}
 .lead{font-size:1.05rem;color:var(--c-texte-2);max-width:62ch;margin-bottom:1.6rem}
 .home-shell{padding:clamp(2rem,7vw,5rem) 0 2rem;max-width:1050px}
 .home-shell .lead{font-size:1.15rem;max-width:58ch}
@@ -108,7 +133,7 @@ h2.page.home-title{text-align:center;max-width:none;margin:0 0 2.2rem;font-size:
 /* Cartes de choix internes à un parcours (§6.3) : suivent la couleur du parcours actif plutôt qu'un bleu fixe */
 .brique.bleu{border-color:var(--c-parcours)}
 .brique.bleu .ico{background:var(--c-parcours-clair);color:var(--c-parcours)}
-.brique h3{font-size:1.15rem;font-weight:600;color:var(--c-primaire);line-height:1.3}
+.brique h3{font-size:1.15rem;font-weight:600;color:var(--c-primaire-txt);line-height:1.3}
 .brique p{font-size:.92rem;color:var(--c-texte-2)}
 .brique .cta{margin-top:auto;font-size:.85rem;font-weight:600;color:var(--c-accent)}
 .brique.bleu .cta,.brique.brique-projet .cta,.brique.brique-rps .cta{color:var(--c-parcours)}
@@ -118,7 +143,7 @@ li.pt{background:var(--c-carte);border:1px solid #D0D3D4;border-left:4px solid v
 li.pt.done{background:var(--c-tonal)}
 li.pt .t{font-weight:500}
 li.pt .meta{display:flex;flex-direction:column;align-items:flex-end;gap:.4rem}
-.time{font-size:.78rem;font-weight:600;background:var(--c-tonal);color:var(--c-primaire);border-radius:99px;padding:.2rem .7rem;white-space:nowrap}
+.time{font-size:.78rem;font-weight:600;background:var(--c-tonal);color:var(--c-primaire-txt);border-radius:99px;padding:.2rem .7rem;white-space:nowrap}
 li.pt.done .time{background:var(--c-carte)}
 a.detail{font-size:.85rem;font-weight:600;color:var(--c-accent);text-decoration:none;white-space:nowrap}
 a.detail:hover{text-decoration:underline}
@@ -130,7 +155,7 @@ input[type=checkbox].chk{width:1.35rem;height:1.35rem;accent-color:var(--c-ok);c
 .progress .bar>div{height:100%;background:var(--c-ok);border-radius:99px;transition:width .3s}
 /* ---------- Page détail ---------- */
 .bloc{background:var(--c-carte);border:1px solid #D0D3D4;border-radius:4px;padding:1.5rem;margin-bottom:1.2rem;box-shadow:0 2px 6px rgba(0,56,101,.06)}
-.bloc h3{color:var(--c-primaire);font-size:1.05rem;font-weight:600;margin-bottom:.9rem;display:flex;align-items:center;gap:.55rem}
+.bloc h3{color:var(--c-primaire-txt);font-size:1.05rem;font-weight:600;margin-bottom:.9rem;display:flex;align-items:center;gap:.55rem}
 .bloc h3 svg{color:var(--c-accent);flex:none}
 /* En-tête d'encadré avec un lien annexe (ex. « Pour aller plus loin ») calé en haut à droite */
 .bloc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.9rem}
@@ -144,7 +169,7 @@ textarea:focus-visible{outline:var(--focus)}
 .saved{font-size:.8rem;color:var(--c-ok);font-weight:600;margin-top:.4rem;min-height:1.2em}
 /* ---------- Tableau ressources ---------- */
 table.res{width:100%;border-collapse:collapse;font-size:.93rem}
-table.res th{text-align:left;font-weight:600;color:var(--c-primaire);padding:.5rem .6rem;background:var(--c-tonal);border-radius:6px}
+table.res th{text-align:left;font-weight:600;color:var(--c-primaire-txt);padding:.5rem .6rem;background:var(--c-tonal);border-radius:6px}
 table.res td{padding:.7rem .6rem;vertical-align:top}
 table.res tr+tr td{border-top:1px solid var(--c-fond)}
 table.res a{color:var(--c-accent);font-weight:600;text-decoration:none}
@@ -153,7 +178,7 @@ table.res a:hover{text-decoration:underline}
 .res-off .lib{text-decoration:line-through;text-decoration-thickness:1px}
 .badge-off{display:inline-block;font-size:.72rem;font-weight:700;background:var(--sncf-bleu-marine);color:#fff;border-radius:99px;padding:.1rem .6rem;margin-left:.4rem;white-space:nowrap}
 /* ---------- Bouton « Voir toutes les ressources » (disclosure) ---------- */
-.res-toggle>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;background:var(--c-tonal);color:var(--c-primaire);border-radius:4px;padding:.65rem 1.1rem;font-weight:700;font-size:.92rem}
+.res-toggle>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;background:var(--c-tonal);color:var(--c-primaire-txt);border-radius:4px;padding:.65rem 1.1rem;font-weight:700;font-size:.92rem}
 .res-toggle>summary::-webkit-details-marker{display:none}
 .res-toggle>summary:hover{background:var(--c-tonal-2)}
 .res-toggle[open]>summary{margin-bottom:1.1rem}
@@ -161,7 +186,7 @@ table.res a:hover{text-decoration:underline}
 .navret{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
 .btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--c-primaire);color:#fff;border:none;border-radius:4px;padding:.65rem 1.1rem;font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none}
 .btn:hover{background:var(--c-accent)}
-.btn.sec{background:var(--c-tonal);color:var(--c-primaire)}
+.btn.sec{background:var(--c-tonal);color:var(--c-primaire-txt)}
 .btn.sec:hover{background:var(--c-tonal-2)}
 /* ---------- Fiches ressources ---------- */
 .fiche h4{color:var(--c-accent);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin:1.2rem 0 .5rem}
@@ -169,7 +194,7 @@ table.res a:hover{text-decoration:underline}
 .cols{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .tag{display:inline-block;background:var(--c-accent-clair);color:var(--c-accent);font-weight:600;font-size:.82rem;border-radius:99px;padding:.25rem .8rem;margin:.15rem .2rem .15rem 0}
 .contact{background:var(--c-tonal);border-radius:10px;padding:.8rem .9rem;margin-top:.6rem;font-size:.88rem}
-.relais-card h5{color:var(--c-primaire);font-size:.98rem;margin-bottom:.35rem}
+.relais-card h5{color:var(--c-primaire-txt);font-size:.98rem;margin-bottom:.35rem}
 .relais-card p{font-size:.9rem;color:var(--c-texte-2)}
 /* étoile / boussole 5 branches */
 .etoile{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
@@ -181,7 +206,7 @@ table.res a:hover{text-decoration:underline}
 .frise{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));counter-reset:etape}
 .frise .e{background:var(--c-carte);border-radius:var(--r);padding:1rem;box-shadow:0 1px 3px rgba(28,34,55,.08);counter-increment:etape}
 .frise .e::before{content:counter(etape);display:grid;place-items:center;width:2rem;height:2rem;border-radius:99px;background:var(--c-primaire);color:#fff;font-weight:700;margin-bottom:.6rem}
-.frise .e h5{color:var(--c-primaire);font-size:.92rem;margin-bottom:.4rem}
+.frise .e h5{color:var(--c-primaire-txt);font-size:.92rem;margin-bottom:.4rem}
 .frise .e ul{list-style:none;font-size:.85rem;color:var(--c-texte-2);display:flex;flex-direction:column;gap:.3rem}
 footer.site{background:var(--c-primaire);color:#fff;text-align:center;padding:1.4rem;font-size:.85rem}
 footer.site a{color:#fff}
@@ -225,7 +250,7 @@ li.pt.inprogress{background:var(--tint-ambre)}
 .item-status{display:flex;align-items:center;gap:.8rem;font-size:.9rem;color:var(--c-texte-2)}
 .revised{display:block;font-size:.76rem;color:var(--c-texte-2);font-weight:400;margin-top:.15rem}
 /* ---------- Ressources : type et « utile » ---------- */
-.type-badge{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:99px;padding:.1rem .55rem;margin-left:.4rem;background:var(--c-tonal);color:var(--c-primaire);white-space:nowrap}
+.type-badge{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:99px;padding:.1rem .55rem;margin-left:.4rem;background:var(--c-tonal);color:var(--c-primaire-txt);white-space:nowrap}
 .type-badge.type-outil{background:var(--tint-ambre);color:var(--sncf-mordore)}
 .type-badge.type-formation{background:var(--tint-p1);color:var(--c-vert)}
 table.res td:last-child{text-align:center;width:3.4rem}
