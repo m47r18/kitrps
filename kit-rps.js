@@ -697,7 +697,7 @@ function render(){
   const mIt=hash.match(/^cl\/([a-z]+)\/(\d+)$/);
   const mP2=hash.match(/^rps\/([a-z]+)$/);
   const mF=hash.match(/^fiche\/([a-z-]+)$/);
-  const STEPPER_HASH={"projet":[STEPPER_PROJET,"accueil"],"projet/checklists":[STEPPER_PROJET,"cas"],"rps":[STEPPER_RPS,"cas"]};
+  const STEPPER_HASH={"projet":[STEPPER_PROJET,"cas"],"projet/checklists":[STEPPER_PROJET,"cas"],"rps":[STEPPER_RPS,"cas"]};
 
   if(VUES[hash]){
     const v=VUES[hash];titre=v.titre;crumbs=v.crumbs;
