@@ -18,7 +18,8 @@ const ICO = {
   retour:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
   maison:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 12 3.5 20.5 11M6 10v10.5h12V10"/></svg>',
   loupeMini:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>',
-  coeurMini:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4.5-3.2-8-6.2-8-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 3.8-3.5 6.8-8 10z"/></svg>'
+  coeurMini:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4.5-3.2-8-6.2-8-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 3.8-3.5 6.8-8 10z"/></svg>',
+  sablier:'<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12M6 21h12M7 3c0 5 5 6.5 5 9s-5 4-5 9M17 3c0 5-5 6.5-5 9s5 4 5 9"/></svg>'
 };
 
 /* =====================================================================
@@ -554,9 +555,9 @@ function resTable(ids){
     const likeBtn=r.dispo?`<button type="button" class="like${liked?" liked":""}" data-like="${id}" aria-pressed="${liked}" aria-label="${liked?"Retirer « "+esc(r.lib)+" » de mes ressources utiles":"Marquer « "+esc(r.lib)+" » comme utile"}">${ICO.coeurMini}</button>`:"";
     if(r.dispo){
       const lien=r.fiche?`<a href="#/fiche/${r.fiche}">${r.lib}</a>`:(r.href?`<a href="${r.href}" target="_blank" rel="noopener">${r.lib} <span class="visually-hidden">(nouvelle fenêtre)</span></a>`:`<span class="lib">${r.lib}</span>`);
-      return `<tr><td>${lien}${typeBadge}</td><td>${r.desc}</td><td><span class="time">${r.time}</span></td><td>${likeBtn}</td></tr>`;
+      return `<tr><td>${lien}${typeBadge}</td><td>${r.desc}</td><td><span class="time time-ico">${ICO.sablier} ${r.time}</span></td><td>${likeBtn}</td></tr>`;
     }
-    return `<tr class="res-off"><td><span class="lib">${r.lib}</span><span class="badge-off">Non disponible</span>${typeBadge}</td><td>${r.desc}</td><td><span class="time" style="background:var(--c-fond);color:var(--c-off)">${r.time}</span></td><td></td></tr>`;
+    return `<tr class="res-off"><td><span class="lib">${r.lib}</span><span class="badge-off">Non disponible</span>${typeBadge}</td><td>${r.desc}</td><td><span class="time time-ico" style="background:var(--c-fond);color:var(--c-off)">${ICO.sablier} ${r.time}</span></td><td></td></tr>`;
   }).join("");
   return `<section class="bloc" aria-label="Ressources à ma disposition">
     <h3>${ICO.loupeMini} Ressources à ma disposition</h3>
@@ -574,7 +575,7 @@ function ptsList(clId,cl){
     return `<li class="pt${lvl===2?" done":""}${lvl===1?" inprogress":""}">
       ${triCtrl(id,it.t)}
       <span class="t"><a class="tlink" href="#/cl/${clId}/${i}">${it.t}</a>${rev?`<span class="revised">Révisé le ${rev}</span>`:""}</span>
-      <span class="meta"><span class="time">${it.time}</span><a class="detail" href="#/cl/${clId}/${i}">${ICO.loupeMini} Pour aller plus loin</a></span>
+      <span class="meta"><span class="time time-ico">${ICO.sablier} ${it.time}</span><a class="detail" href="#/cl/${clId}/${i}">${ICO.loupeMini} Pour aller plus loin</a></span>
     </li>`;
   }).join("");
   return `<div class="progress"><strong>${done} / ${total}</strong> points traités
@@ -629,7 +630,7 @@ const VUES={
     <h2 class="page">Les trois checklists du volet humain</h2>
     <div class="grid g3">
       ${Object.entries(CL).map(([id,cl])=>`
-      <a class="brique" href="#/cl/${id}"><span class="ico">${ICO[cl.ico]}</span>
+      <a class="brique brique-projet" href="#/cl/${id}"><span class="ico">${ICO[cl.ico]}</span>
         <h3>${cl.titre}</h3><p>${cl.sousTitre}</p>
         <span class="cta">${cl.items.length} points · ouvrir →</span></a>`).join("")}
     </div>`},
@@ -644,7 +645,7 @@ const VUES={
     <p class="lead">Les risques psychosociaux (RPS) sont des risques induits par le travail, son organisation ou ses relations, susceptibles d'altérer la santé physique ou mentale des salariés.</p>
     <div class="grid g2">
       ${Object.entries(P2).map(([id,s])=>`
-      <a class="brique" href="#/rps/${id}"><span class="ico">${ICO[s.ico]}</span>
+      <a class="brique brique-rps" href="#/rps/${id}"><span class="ico">${ICO[s.ico]}</span>
         <h3>${s.titre}</h3><p>${s.intro}</p><span class="cta">Ouvrir →</span></a>`).join("")}
     </div>`},
   "sommaire":{titre:"Sommaire",crumbs:[["#/","Accueil"]],render:()=>`
@@ -706,7 +707,7 @@ function render(){
     const corps=it.res.length
       ? `<div class="cols">${questions}<div style="display:flex;flex-direction:column;gap:1.1rem">${resTable(it.res)}${notes}</div></div>`
       : `${questions}${notes}`;
-    html=stepperHtml(STEPPER_PROJET,"res-"+clId)+`<div class="item-head"><h2 class="page">${it.t}</h2><span class="time">${it.time}</span></div>
+    html=stepperHtml(STEPPER_PROJET,"res-"+clId)+`<div class="item-head"><h2 class="page">${it.t}</h2><span class="time time-ico">${ICO.sablier} ${it.time}</span></div>
       ${corps}
       <div class="bloc item-status">
         ${triCtrl(statusId,it.t)}
@@ -737,6 +738,8 @@ function render(){
   $vue.innerHTML=html;
   $crumbs.innerHTML=crumbsHtml(crumbs,titre);
   document.title=(titre==="Accueil"?"":titre+" — ")+"Kit d'accompagnement humain et de prévention des RPS";
+  document.body.classList.toggle("theme-projet",hash==="projet"||hash.startsWith("projet/")||hash.startsWith("cl/"));
+  document.body.classList.toggle("theme-rps",hash==="rps"||hash.startsWith("rps/"));
   $vue.focus({preventScroll:true});
   window.scrollTo(0,0);
   bind();

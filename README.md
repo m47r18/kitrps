@@ -12,6 +12,7 @@ Prototype web autonome pour aider les managers, chefs de projet, acteurs RH et p
 - Des fiches pratiques sur la gestion de projet, les parties prenantes, la charge de travail, la communication, les relais humains et l'ajustement collectif du cap.
 - Des questions de réflexion et des zones de notes libres, à la fois sur chaque point d'une check-list et sur la check-list dans son ensemble.
 - Un **parcours fléché** (bandeau d'étapes en haut de page) sur les pages « Facteurs humains projet » et « RPS au quotidien », reproduisant le repérage visuel de la maquette du cahier des charges : chaque étape est cliquable et ramène en un clic à n'importe quel point du parcours.
+- Une **couleur d'identité par parcours** (teal pour « Facteurs humains projet », marine pour « RPS au quotidien »), appliquée au bandeau d'étapes, aux cartes de choix et à l'en-tête d'un point de check-list, conformément au principe décrit dans `design-system.md` (« la couleur d'accent change selon le parcours actif »). Les fiches ressources restent neutres car elles sont transverses aux deux parcours.
 - Une progression par check-list avec un **statut à 3 niveaux** par point (vide / en cours / fait), ainsi qu'une date de dernière révision affichée automatiquement.
 - Un **marquage « utile »** (like) sur les ressources disponibles, mémorisé dans le navigateur.
 - Un **type de ressource** affiché (fiche recommandation / outil / formation).
@@ -62,11 +63,12 @@ Effacer les données du site dans les paramètres du navigateur supprime les don
 
 ```text
 .
-├── index.html     # Structure de la page et point d'entrée
-├── kit-rps.css    # Styles, responsive et accessibilité visuelle
-├── kit-rps.js     # Contenus, navigation, rendu et sauvegarde locale
-├── img/           # Logo SNCF et illustrations utilisées sur les pages de choix
-└── README.md      # Documentation du projet
+├── index.html         # Structure de la page et point d'entrée
+├── kit-rps.css        # Styles, responsive et accessibilité visuelle
+├── kit-rps.js         # Contenus, navigation, rendu et sauvegarde locale
+├── img/               # Logo SNCF et illustrations utilisées sur les pages de choix
+├── design-system.md   # Référentiel visuel de la maquette (source du cahier des charges)
+└── README.md          # Documentation du projet
 ```
 
 Le contenu éditorial est centralisé dans les objets `RES`, `CL`, `P2` et `FICHES` du fichier `kit-rps.js`. Les styles principaux sont regroupés dans les variables CSS au début de `kit-rps.css`.
@@ -77,8 +79,10 @@ Ce projet est un **prototype**. Certaines ressources sont indiquées comme non d
 
 ## Points de doute et arbitrages à valider
 
-Cette refonte (HTML/CSS/JS) s'appuie sur le cahier des charges *« 260728 - Expression de besoin - Kit manager appli.pptx »* (diapositives 1 à 6 pour les besoins, diapositives 7 à 26 pour la maquette). Conformément à la consigne reçue, aucun contenu ni cheminement non documenté par ce fichier n'a été inventé. Les points suivants restent ouverts et doivent être tranchés par l'équipe RPS / la DSI avant une mise en production :
+Cette refonte (HTML/CSS/JS) s'appuie sur le cahier des charges *« 260728 - Expression de besoin - Kit manager appli.pptx »* (diapositives 1 à 6 pour les besoins, diapositives 7 à 26 pour la maquette) ainsi que sur `design-system.md`, qui synthétise les éléments visuels d'une autre maquette (*« 260721 - … Kit manager Prototype V2.pptx »*). Conformément à la consigne reçue, aucun contenu ni cheminement non documenté par ces fichiers n'a été inventé. Les points suivants restent ouverts et doivent être tranchés par l'équipe RPS / la DSI avant une mise en production :
 
+- **Couleurs de `design-system.md` traitées comme des estimations, pas comme des valeurs exactes.** Ce fichier indique lui-même que ses codes couleur (`#17A398`, `#1B3B5C`…) sont des « estimations visuelles », faute de valeurs exploitables dans le PPTX correspondant. Or le thème réel du fichier `260728 - Expression de besoin.pptx` (extrait techniquement de son XML) donne des couleurs exactes déjà utilisées dans `kit-rps.css` (`#003865`, `#0084D4`, `#00B388`…). Pour appliquer le principe de `design-system.md` (« la couleur d'accent change selon le parcours ») sans introduire de teintes non vérifiées, la thématisation par parcours réutilise uniquement les couleurs déjà confirmées : `--c-vert` (#00B388, le teal réel du thème) pour le parcours « Facteurs humains projet », `--c-primaire` (#003865, le marine réel du thème) pour le parcours « RPS au quotidien ». À valider avec l'équipe si des teintes distinctes de succès (`--c-ok`) et d'identité de parcours (teal) sont malgré tout souhaitées, car elles partagent actuellement la même valeur.
+- **Composants de `design-system.md` non repris.** Certains composants décrits (cartes « Ce qui est / Ce qui n'est pas », pages de transition avec bandeau vertical plein écran, diagrammes en swimlanes, timelines illustrées) correspondent à des écrans de couverture/transition qui n'ont pas d'équivalent dans l'architecture actuelle du site (accueil, cas d'usage, check-lists, fiches). Ils n'ont pas été ajoutés pour ne pas créer de nouvelles pages non demandées par le cahier des charges fonctionnel.
 - **Sauvegarde en ligne et multi-appareils.** Le cahier des charges demande que les notes/statuts soient retrouvés « d'une connexion à l'autre » et que la solution technique soit proposée par la DSI. Ce prototype reste **local au navigateur** (`localStorage`), sans compte utilisateur ni backend : aucune solution de stockage en ligne n'a été inventée, faute d'architecture (authentification, hébergement, base de données) définie.
 - **Plusieurs « versions » ouvertes en simultané, ouverture/fermeture/transfert d'une version, travail collaboratif en temps réel.** Ces besoins (diapositive 5) supposent un backend multi-utilisateurs explicitement présenté comme à concevoir par la DSI. Non implémentés ici.
 - **« Mécanisme de suivi de l'avancement (date de révision) ».** Interprété a minima, côté navigateur uniquement, par une date de dernière modification par point (affichée « Révisé le JJ/MM/AAAA »). Un véritable historique/audit partagé entre utilisateurs nécessite le backend ci-dessus.

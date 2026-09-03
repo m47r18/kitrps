@@ -18,10 +18,18 @@
   --c-proto:#DC582A;           /* bandeau prototype */
   --c-jaune:#DAAA00;
   --c-vert:#00B388;
-  --r:8px;
+  /* Couleur d'identité de parcours (cf. design-system.md §3) : teal pour le
+     parcours « projet », marine pour le parcours « RPS au quotidien ».
+     Neutre (accent par défaut) sur l'accueil, le sommaire et les fiches
+     transverses. Pilotée via les classes .theme-projet / .theme-rps sur <body>. */
+  --c-parcours:var(--c-accent);
+  --c-parcours-clair:var(--c-accent-clair);
+  --r:10px;
   --focus:3px solid #0084D4;
   font-size:16px;
 }
+body.theme-projet{--c-parcours:var(--c-vert);--c-parcours-clair:#E1F5F0}
+body.theme-rps{--c-parcours:var(--c-primaire);--c-parcours-clair:var(--c-tonal)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
@@ -115,7 +123,7 @@ table.res a{color:var(--c-accent);font-weight:600;text-decoration:none}
 table.res a:hover{text-decoration:underline}
 .res-off{color:var(--c-off)}
 .res-off .lib{text-decoration:line-through;text-decoration-thickness:1px}
-.badge-off{display:inline-block;font-size:.72rem;font-weight:700;background:var(--c-tonal);color:var(--c-off);border-radius:99px;padding:.1rem .6rem;margin-left:.4rem;white-space:nowrap}
+.badge-off{display:inline-block;font-size:.72rem;font-weight:700;background:var(--c-off);color:#fff;border-radius:99px;padding:.1rem .6rem;margin-left:.4rem;white-space:nowrap}
 /* ---------- Navigation bas de page ---------- */
 .navret{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
 .btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--c-primaire);color:#fff;border:none;border-radius:4px;padding:.65rem 1.1rem;font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none}
@@ -152,24 +160,26 @@ footer.site a{color:#fff}
    ===================================================================== */
 /* ---------- Parcours fléché (« réglette ») ---------- */
 .stepper{background:var(--c-primaire);overflow-x:auto}
-.stepper ol{list-style:none;display:flex;min-width:max-content}
+.stepper ol{list-style:none;display:flex;min-width:max-content;background:#F2F2F2}
 .stepper li{flex:none}
-.stepper a{display:block;padding:.6rem 1rem;color:#fff;text-decoration:none;font-size:.78rem;font-weight:600;white-space:nowrap;border-right:1px solid rgba(255,255,255,.15)}
-.stepper a:hover{background:var(--c-primaire-90)}
-.stepper a.current{background:var(--c-tonal-2);color:var(--c-primaire)}
+.stepper a{display:block;padding:.6rem 1.1rem .6rem 1.5rem;margin-left:-.5rem;color:var(--c-texte-2);text-decoration:none;font-size:.78rem;font-weight:600;white-space:nowrap;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%,10px 50%)}
+.stepper li:first-child a{margin-left:0;padding-left:1.1rem;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%)}
+.stepper a:hover{background:#E2E2E2}
+.stepper a.current{background:var(--c-parcours);color:#fff}
+.stepper a.current:hover{background:var(--c-parcours)}
 /* ---------- En-tête d'un point de checklist ---------- */
-.item-head{background:var(--c-tonal);border-radius:var(--r);padding:1.2rem 1.4rem;margin:1.2rem 0 1.4rem;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
+.item-head{background:var(--c-parcours-clair);border-radius:var(--r);padding:1.2rem 1.4rem;margin:1.2rem 0 1.4rem;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
 .item-head h2.page{margin:0}
 /* ---------- Carte « questions à se poser » (fond plein, cf. maquette) ---------- */
-.quest-card{background:var(--c-vert);color:#fff}
+.quest-card{background:var(--c-parcours);color:#fff}
 .quest-card h3,.quest-card h3 svg{color:#fff}
 .quest-card ul.q li::before{background:#fff}
 /* ---------- Statut à 3 niveaux (vide / en cours / fait) ---------- */
-button.tri{width:1.6rem;height:1.6rem;border-radius:50%;border:2px solid var(--c-off);background:#fff;cursor:pointer;flex:none;padding:0;position:relative}
+button.tri{width:1.5rem;height:1.5rem;border-radius:6px;border:2px solid var(--c-off);background:#fff;cursor:pointer;flex:none;padding:0;position:relative}
 button.tri span{position:absolute;inset:0}
 button.tri.tri-1{border-color:var(--c-jaune);background:linear-gradient(90deg,var(--c-jaune) 50%,#fff 50%)}
 button.tri.tri-2{border-color:var(--c-ok);background:var(--c-ok)}
-button.tri.tri-2 span::after{content:"";position:absolute;left:.32rem;top:.02rem;width:.4rem;height:.7rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg)}
+button.tri.tri-2 span::after{content:"";position:absolute;left:.3rem;top:-.02rem;width:.4rem;height:.7rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg)}
 li.pt.inprogress{background:#FBF3D9}
 .item-status{display:flex;align-items:center;gap:.8rem;font-size:.9rem;color:var(--c-texte-2)}
 .revised{display:block;font-size:.76rem;color:var(--c-texte-2);font-weight:400;margin-top:.15rem}
@@ -182,6 +192,12 @@ button.like{background:none;border:none;color:var(--c-off);cursor:pointer;paddin
 button.like.liked{color:var(--c-proto)}
 button.like svg{fill:none}
 button.like.liked svg{fill:currentColor}
+.time-ico{display:inline-flex;align-items:center;gap:.25rem}
+/* ---------- Thématisation par parcours (cf. design-system.md §3) ---------- */
+a.brique.brique-projet{border-top-color:var(--c-vert)}
+a.brique.brique-projet .ico{background:#E1F5F0;color:var(--c-vert)}
+a.brique.brique-rps{border-top-color:var(--c-primaire)}
+a.brique.brique-rps .ico{background:var(--c-tonal);color:var(--c-primaire)}
 @media (max-width:760px){
   .home-intro{grid-template-columns:1fr;gap:1rem}
   h2.page{font-size:2.35rem}
