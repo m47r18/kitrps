@@ -685,10 +685,8 @@ const VUES={
     <p class="lead">Les risques psychosociaux (RPS) sont des risques induits par le travail, son organisation ou ses relations, susceptibles d'altérer la santé physique ou mentale des salariés.</p>
     <div class="grid g2">
       ${Object.entries(P2).filter(([id])=>id!=="ressources").map(([id,s])=>`
-      <div class="brique brique-rps"><a class="brique-cover" href="#/rps/${id}" aria-label="Ouvrir « ${esc(s.titre)} »"></a>
-        <a class="brique-plus" href="#/rps/ressources">${ICO.loupeMini} Pour aller plus loin</a>
-        <span class="ico">${ICO[s.ico]}</span>
-        <h3>${s.titre}</h3><p>${s.intro}</p><span class="cta">Ouvrir →</span></div>`).join("")}
+      <a class="brique brique-rps" href="#/rps/${id}"><span class="ico">${ICO[s.ico]}</span>
+        <h3>${s.titre}</h3><p>${s.intro}</p><span class="cta">Ouvrir →</span></a>`).join("")}
     </div>`},
   "sommaire":{titre:"Sommaire",crumbs:[["#/","Accueil"]],render:()=>`
     <h2 class="page">Explorer librement le kit</h2>
@@ -793,7 +791,7 @@ function render(){
     const s=P2[mP2[1]];titre=s.titre;crumbs=[["#/","Accueil"],["#/rps","RPS au quotidien"]];
     const noteId=`note-rps-${mP2[1]}`;
     html=stepperHtml(STEPPER_RPS,mP2[1])+`<h2 class="page">${s.titre}</h2><p class="lead">${s.intro}</p>
-      ${s.pts?`<section class="bloc"><h3>${ICO.check} Les points essentiels</h3><ul class="q">${s.pts.map(p=>`<li>${p}</li>`).join("")}</ul></section>`:""}
+      ${s.pts?`<section class="bloc"><div class="bloc-head"><h3>${ICO.check} Les points essentiels</h3><a class="detail" href="#/rps/ressources">${ICO.loupeMini} Pour aller plus loin</a></div><ul class="q">${s.pts.map(p=>`<li>${p}</li>`).join("")}</ul></section>`:""}
       ${s.res?resTable(s.res):""}
       <section class="bloc"><h3>${ICO.crayon} Zone de texte libre</h3>
         ${zone(noteId,"Vos notes (sauvegardées automatiquement dans ce navigateur) :")}</section>
