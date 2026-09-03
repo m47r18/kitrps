@@ -619,16 +619,19 @@ function ptsList(clId,cl){
 /* =====================================================================
    VUES
    ===================================================================== */
-/* Page placeholder pour les liens légaux de pied de page, en attendant leur rédaction */
-function pageEnConstruction(titre){
-  return {titre,crumbs:[["#/","Accueil"]],render:()=>`
+/* Page placeholder pour les liens légaux de pied de page et les outils pas encore prêts, en attendant leur réalisation.
+   themed=true reprend la couleur du parcours actif (menthe côté projet, ex. à la place du gris neutre). */
+function pageEnConstruction(titre,crumbs=[["#/","Accueil"]],themed=false){
+  const retour=crumbs[crumbs.length-1]||["#/","Accueil"];
+  return {titre,crumbs,render:()=>`
     <h2 class="page">${titre}</h2>
-    <div class="bloc">
-      <p class="lead">Cette page est en cours de construction.</p>
+    <div class="bloc${themed?' quest-card':''}">
+      ${themed?`<h3>${ICO.boussole} En construction</h3>`:''}
+      <p class="lead">Cet outil est en cours de construction.</p>
       <p>Le contenu de « ${titre} » sera ajouté prochainement.</p>
     </div>
     <div class="navret">
-      <a class="btn sec" href="#/">${ICO.maison} Accueil</a>
+      <a class="btn sec"${themed?' style="background:var(--c-parcours-clair);color:var(--c-parcours)"':''} href="${retour[0]}">${ICO.retour} ${retour[1]}</a>
     </div>`};
 }
 const VUES={
@@ -651,7 +654,7 @@ const VUES={
       <a class="brique bleu" href="#/projet/checklists"><img class="brique-illus" src="img/besoinProjetConsequent.png" alt="" aria-hidden="true"><span class="ico">${ICO.check}</span>
         <h3>J'ai un projet conséquent</h3><p>Je veux parcourir les questions à se poser pour assurer un accompagnement humain du projet.</p>
         <span class="cta">Voir les 3 checklists →</span></a>
-      <a class="brique bleu" href="#/projet/essentiel"><img class="brique-illus" src="img/besoinProjetModeste.png" alt="" aria-hidden="true"><span class="ico">${ICO.boussole}</span>
+      <a class="brique bleu" href="#/projet/modeste"><img class="brique-illus" src="img/besoinProjetModeste.png" alt="" aria-hidden="true"><span class="ico">${ICO.boussole}</span>
         <h3>J'ai un projet plus modeste</h3><p>Je veux aller à l'essentiel et identifier les incontournables.</p>
         <span class="cta">Voir l'essentiel →</span></a>
       <a class="brique bleu" href="#/projet/checklists"><img class="brique-illus" src="img/besoinProjetExplorer.png" alt="" aria-hidden="true"><span class="ico">${ICO.loupe}</span>
@@ -670,6 +673,7 @@ const VUES={
         <h3>${cl.titre}</h3><p>${cl.sousTitre}</p>
         <span class="cta">${cl.items.length} points · ouvrir →</span></a>`).join("")}
     </div>`},
+  "projet/modeste":pageEnConstruction("L'essentiel pour un projet modeste",[["#/","Accueil"],["#/projet","Facteurs humains projet"]],true),
   "projet/essentiel":{titre:"L'essentiel",crumbs:[["#/","Accueil"],["#/projet","Facteurs humains projet"]],render:()=>`
     <h2 class="page">Aller à l'essentiel : les incontournables</h2>
     <p class="lead">Les points essentiels des trois checklists, en un coup d'œil. Cochez ce qui est traité ; cliquez sur un point pour ses questions et ressources.</p>
