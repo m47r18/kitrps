@@ -16,7 +16,9 @@ const ICO = {
   crayon:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3.5 20.5 7 8 19.5 3.5 20.5 4.5 16z"/></svg>',
   doc:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2.5h8L19 7.5v14H6z"/><path d="M14 2.5v5h5"/></svg>',
   retour:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
-  maison:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 12 3.5 20.5 11M6 10v10.5h12V10"/></svg>'
+  maison:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 12 3.5 20.5 11M6 10v10.5h12V10"/></svg>',
+  loupeMini:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>',
+  coeurMini:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4.5-3.2-8-6.2-8-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 3.8-3.5 6.8-8 10z"/></svg>'
 };
 
 /* =====================================================================
@@ -25,20 +27,22 @@ const ICO = {
    href à renseigner plus tard pour les ressources externes.
    ===================================================================== */
 const RES = {
-  gestionProjet:{lib:"Bonnes pratiques de gestion de projet et ressources matérielles",desc:"Bonnes pratiques préventives pour gérer un projet et pour identifier et gérer les ressources matérielles nécessaires au projet",time:"~ 3 min",dispo:true,fiche:"gestion-projet"},
-  resistances:{lib:"Accompagner les résistances au changement",desc:"Recommandations sur comment évaluer et appréhender les risques autour de la résistance au changement",time:"~ 3 min",dispo:false},
-  relais:{lib:"Les relais humains pour prévenir et accompagner les RPS",desc:"Cartographie des relais pour prévenir et accompagner les RPS : identifier les personnes clés, leurs rôles et leurs contacts pour savoir sur qui s'appuyer",time:"~ 3 min",dispo:true,fiche:"relais"},
-  partiesPrenantes:{lib:"Les parties prenantes sur un projet et comment les embarquer",desc:"Cartographie des différentes parties prenantes sur un projet et bonnes pratiques pour les embarquer",time:"~ 3 min",dispo:true,fiche:"parties-prenantes"},
-  charge:{lib:"Comment aborder la charge de travail avec les équipes",desc:"Recommandations pour aborder la charge de travail pour soi-même et avec les équipes",time:"~ 8 min",dispo:true,fiche:"charge"},
-  powerApps:{lib:"Power Apps RPS",desc:"À utiliser avec votre préventeur qui est habilité à l'outil. Évaluation RPS qui se base sur les questions issues du RH970",time:"~ 1 h",dispo:false},
-  outilImpacts:{lib:"Outil d'évaluation des impacts humains",desc:"Une trame pour prendre en note toute votre réflexion sur les impacts humains du projet et qui permet une évaluation globale du risque humain sous forme de jauge",time:"~ 15 min",dispo:false},
-  remontee:{lib:"Outil de remontée d'informations / expression des salariés",desc:"Recueil des interrogations des salariés permettant de faire émerger les dysfonctionnements dans le cadre d'un projet",time:"—",dispo:false},
-  communication:{lib:"Bonnes pratiques de communication",desc:"Étapes clés pour communiquer durant un projet et bonnes pratiques sur la manière de communiquer",time:"~ 3 min",dispo:true,fiche:"communication"},
-  dialogueSocial:{lib:"Préparation du dialogue social",desc:"Présentation du processus avec les IRP et de la liste des documents à produire, et recommandations sur quand communiquer en lien avec les RS",time:"~ 5 min",dispo:false},
-  etoile:{lib:"Comment ajuster le cap ensemble pour préserver l'équipe ?",desc:"Outil pour prendre du recul en équipe et identifier collectivement ce qu'il faut continuer, arrêter, faire plus ou moins et commencer",time:"~ 60 min",dispo:true,fiche:"etoile"},
-  formation:{lib:"Formation « Comprendre, évaluer, prendre en charge les RPS pour moi et pour mon collectif de travail »",desc:"De la théorie et des techniques pratiques pour mieux comprendre les RPS et le rôle du manager, savoir repérer les signaux faibles et accompagner un collaborateur en difficulté",time:"~ 1 j",dispo:false},
-  boiteIdees:{lib:"Boîte à idées pour bâtir un plan d'actions pour améliorer la QVT",desc:"Proposition d'actions simples et rapides sur lesquelles travailler pour améliorer l'organisation du travail et la qualité de vie au travail",time:"~ 3 min",dispo:false}
+  gestionProjet:{lib:"Bonnes pratiques de gestion de projet et ressources matérielles",desc:"Bonnes pratiques préventives pour gérer un projet et pour identifier et gérer les ressources matérielles nécessaires au projet",time:"~ 3 min",dispo:true,fiche:"gestion-projet",type:"ficheReco"},
+  resistances:{lib:"Accompagner les résistances au changement",desc:"Recommandations sur comment évaluer et appréhender les risques autour de la résistance au changement",time:"~ 3 min",dispo:false,type:"ficheReco"},
+  relais:{lib:"Les relais humains pour prévenir et accompagner les RPS",desc:"Cartographie des relais pour prévenir et accompagner les RPS : identifier les personnes clés, leurs rôles et leurs contacts pour savoir sur qui s'appuyer",time:"~ 3 min",dispo:true,fiche:"relais",type:"ficheReco"},
+  partiesPrenantes:{lib:"Les parties prenantes sur un projet et comment les embarquer",desc:"Cartographie des différentes parties prenantes sur un projet et bonnes pratiques pour les embarquer",time:"~ 3 min",dispo:true,fiche:"parties-prenantes",type:"ficheReco"},
+  charge:{lib:"Comment aborder la charge de travail avec les équipes",desc:"Recommandations pour aborder la charge de travail pour soi-même et avec les équipes",time:"~ 8 min",dispo:true,fiche:"charge",type:"ficheReco"},
+  powerApps:{lib:"Power Apps RPS",desc:"À utiliser avec votre préventeur qui est habilité à l'outil. Évaluation RPS qui se base sur les questions issues du RH970",time:"~ 1 h",dispo:false,type:"outil"},
+  outilImpacts:{lib:"Outil d'évaluation des impacts humains",desc:"Une trame pour prendre en note toute votre réflexion sur les impacts humains du projet et qui permet une évaluation globale du risque humain sous forme de jauge",time:"~ 15 min",dispo:false,type:"outil"},
+  remontee:{lib:"Outil de remontée d'informations / expression des salariés",desc:"Recueil des interrogations des salariés permettant de faire émerger les dysfonctionnements dans le cadre d'un projet",time:"—",dispo:false,type:"outil"},
+  communication:{lib:"Bonnes pratiques de communication",desc:"Étapes clés pour communiquer durant un projet et bonnes pratiques sur la manière de communiquer",time:"~ 3 min",dispo:true,fiche:"communication",type:"ficheReco"},
+  dialogueSocial:{lib:"Préparation du dialogue social",desc:"Présentation du processus avec les IRP et de la liste des documents à produire, et recommandations sur quand communiquer en lien avec les RS",time:"~ 5 min",dispo:false,type:"ficheReco"},
+  etoile:{lib:"Comment ajuster le cap ensemble pour préserver l'équipe ?",desc:"Outil pour prendre du recul en équipe et identifier collectivement ce qu'il faut continuer, arrêter, faire plus ou moins et commencer",time:"~ 60 min",dispo:true,fiche:"etoile",type:"ficheReco"},
+  formation:{lib:"Formation « Comprendre, évaluer, prendre en charge les RPS pour moi et pour mon collectif de travail »",desc:"De la théorie et des techniques pratiques pour mieux comprendre les RPS et le rôle du manager, savoir repérer les signaux faibles et accompagner un collaborateur en difficulté",time:"~ 1 j",dispo:false,type:"formation"},
+  boiteIdees:{lib:"Boîte à idées pour bâtir un plan d'actions pour améliorer la QVT",desc:"Proposition d'actions simples et rapides sur lesquelles travailler pour améliorer l'organisation du travail et la qualité de vie au travail",time:"~ 3 min",dispo:false,type:"outil"}
 };
+/* Légende des types de ressources (cf. besoins fonctionnels, légende diapositive 5) */
+const RES_TYPE_LABEL = {ficheReco:"Fiche recommandation", outil:"Outil", formation:"Formation"};
 
 /* =====================================================================
    CHECKLISTS — Partie 1 : intégrer les facteurs humains dans le projet
@@ -51,9 +55,9 @@ const CL = {
     items:[
       {t:"Définir les ressources (processus, outils, guides…) et compétences dont j'ai besoin pour mener ce projet",time:"~ 10 min",
        q:["Est-ce que j'ai tous les outils nécessaires pour gérer ce projet (kit méthodologique de gestion de projet…) ? Quels sont mes éventuels besoins de formation ?",
-          "Est-ce que je dispose des moyens techniques pour mener sereinement le projet (outils de gestion de projet, outils spécifiques selon la nature du projet…) ? Ai-je identifié mes besoins d'outillage ?",
           "Suis-je en mesure de détecter les signaux faibles et d'accompagner les situations de RPS ? Est-ce que je suis à l'aise pour traiter des sujets RPS ?",
-          "Ai-je les ressources spécifiques et les connaissances requises pour conduire la prévention des RPS (mesures opérationnelles de prévention…) ? Ai-je identifié mes éventuels besoins de formation ?"],
+          "Ai-je les ressources spécifiques et les connaissances requises pour conduire la prévention des RPS (mesures opérationnelles de prévention…) ? Ai-je identifié mes éventuels besoins de formation ?",
+          "Est-ce que je dispose des moyens techniques pour mener sereinement le projet (outils de gestion de projet, outils spécifiques selon la nature du projet…) ? Ai-je identifié mes besoins d'outillage ?"],
        res:["gestionProjet","resistances"]},
       {t:"Identifier les relais humains sur lesquels je peux m'appuyer (sponsors, valideurs, chefs de lots, contributeurs, réseau d'appui, préventeur, RH, coach externe… et clients du projet à écouter), et la manière de les embarquer",time:"~ 20 min",
        q:["Ai-je bien écouté et identifié les attentes des clients du projet ? Est-il nécessaire de conduire une phase d'écoute approfondie pour mieux cerner leurs besoins avant de démarrer ?",
@@ -63,8 +67,8 @@ const CL = {
           "Comment et à quel moment embarquer les relais humains pour les intégrer efficacement au projet (modalités et délai de sollicitation, éléments de langage…) ?",
           "Est-ce que le management de l'entité concernée est bien embarqué sur le projet ?"],
        res:["relais","partiesPrenantes","resistances"]},
-      {t:"Structurer le projet et son futur pilotage (gestion de projet, outils, indicateurs, moments de partage / instances…)",time:"~ 2 h",
-       q:["Ai-je bien cadré et structuré la gestion de projet (organisation du projet, livrables identifiés, planning et priorisation des actions, indicateurs clés, rituels à mettre en place…) ? Ai-je analysé le niveau d'importance de mes tâches ?",
+      {t:"Préparer le pilotage du projet (structuration de la gestion de projet, outils, indicateurs, moments de partage / instances…)",time:"~ 2 h",
+       q:["Ai-je bien cadré et structuré la gestion de projet (organisation du projet, livrables identifiés, planning et priorisation des actions, indicateurs clés, rituels à mettre en place pour la conduite du projet…) ? Ai-je identifié le niveau d'importance de mes tâches ?",
           "En particulier, quelle gouvernance projet mettre en place (instances du projet, participants et rôle décisionnaire de ces instances…) ?",
           "Ai-je les bons outils de pilotage pour le suivi de l'avancement du projet ?",
           "Ai-je bien identifié et anticipé les autres tâches à faire en amont du projet (diagnostic, démarche RPS…) ?",
@@ -76,10 +80,10 @@ const CL = {
           "Au regard de l'évaluation de ma charge de travail, dois-je requestionner l'allotissement du projet et la priorisation des tâches ?",
           "Comment aborder avec ma hiérarchie (en entretien Forfait Jour…) mes éventuelles difficultés, risques et besoins liés à ma charge de travail ?"],
        res:["charge"]},
-      {t:"Assurer que le projet réunit toutes les conditions de réussite (mandat clair et validé, sponsor et/ou commanditaire de bon niveau, collectif représentant le projet engagé…)",time:"~ 20 min",
+      {t:"Assurer que le projet réunit toutes les conditions de réussite (mandat clair et validé, sponsor et/ou commanditaire de bon niveau pour le projet, collectif représentant le projet engagé…)",time:"~ 20 min",
        q:["Mener ce projet est-il bien la bonne solution pour atteindre l'objectif fixé par le commanditaire ? Ai-je identifié, si besoin, les marges de manœuvre sur la manière de faire pour garantir l'atteinte de cet objectif ?",
           "Ai-je rédigé le mandat de projet ? Est-il clair, validé et partagé ?",
-          "Est-ce que le sponsor et/ou le commanditaire est identifié et de bon niveau pour assurer son rôle décisionnaire sur le projet ? Est-il mobilisé et en capacité de m'appuyer ?",
+          "Est-ce que le sponsor et/ou le commanditaire est identifié et de bon niveau pour assurer son rôle décisionnaire sur le projet ? Est-il mobilisé et en capacité de m'appuyer sur le projet ?",
           "Le projet est-il représenté et porté par un collectif (CODIR…) ? Ce collectif est-il engagé dans le projet ?",
           "Quelles sont les contraintes locales pour le déploiement de la solution ? Quelles marges de manœuvre au regard des échéances non négociables ? Le cas échéant, quels renoncements ou reports seront nécessaires par ailleurs ?"],
        res:[]}
@@ -467,15 +471,65 @@ const FICHES = {
 
 /* =====================================================================
    ÉTAT — localStorage
+   Statut à 3 niveaux (0 = vide, 1 = en cours, 2 = fait — cf. besoins
+   fonctionnels diapositive 4 : « cases à cocher vide / en cours / fait »).
+   Les anciens exports (checks booléens) restent lisibles : true => fait.
    ===================================================================== */
 const KEY="kit-rps-v1";
 let STATE={};
 try{STATE=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){STATE={}}
 function save(){localStorage.setItem(KEY,JSON.stringify(STATE))}
-function setNote(id,val){STATE.notes=STATE.notes||{};STATE.notes[id]=val;save()}
+function touchRevision(id){STATE.revised=STATE.revised||{};STATE.revised[id]=new Date().toISOString()}
+function setNote(id,val){STATE.notes=STATE.notes||{};STATE.notes[id]=val;touchRevision(id);save()}
 function getNote(id){return (STATE.notes&&STATE.notes[id])||""}
-function setChk(id,val){STATE.checks=STATE.checks||{};STATE.checks[id]=val;save()}
-function getChk(id){return !!(STATE.checks&&STATE.checks[id])}
+function setChk(id,val){STATE.checks=STATE.checks||{};STATE.checks[id]=Math.max(0,Math.min(2,val));touchRevision(id);save()}
+function getChk(id){
+  const v=STATE.checks&&STATE.checks[id];
+  if(v===true) return 2;
+  if(typeof v==="number") return v;
+  return 0;
+}
+function cycleChk(id){setChk(id,(getChk(id)+1)%3)}
+function getRevised(id){
+  const v=STATE.revised&&STATE.revised[id];
+  if(!v) return "";
+  const d=new Date(v);
+  return isNaN(d)?"":d.toLocaleDateString("fr-FR");
+}
+function setLike(id,val){STATE.likes=STATE.likes||{};STATE.likes[id]=val;save()}
+function getLike(id){return !!(STATE.likes&&STATE.likes[id])}
+function toggleLike(id){setLike(id,!getLike(id))}
+
+/* =====================================================================
+   PARCOURS FLÉCHÉ (« réglette » — besoins fonctionnels diapositive 4)
+   Bandeau d'étapes cliquables reproduisant le repérage visuel présent
+   sur les diapositives 12 à 25 de la maquette PPTX, pour permettre à
+   l'utilisateur de se situer et de revenir en 1 clic à toute étape.
+   ===================================================================== */
+const STEPPER_PROJET=[
+  {key:"accueil",label:"Accueil",href:"#/"},
+  {key:"cas",label:"Cas d'usage",href:"#/projet"},
+  {key:"cl-moi",label:"Checklist pour moi-même",href:"#/cl/moi"},
+  {key:"res-moi",label:"Ressources pour moi-même",href:"#/cl/moi"},
+  {key:"cl-impacts",label:"Checklist des impacts humains",href:"#/cl/impacts"},
+  {key:"res-impacts",label:"Ressources impacts humains",href:"#/cl/impacts"},
+  {key:"cl-collectif",label:"Checklist pour préparer le collectif",href:"#/cl/collectif"},
+  {key:"res-collectif",label:"Ressources préparation collectif",href:"#/cl/collectif"}
+];
+const STEPPER_RPS=[
+  {key:"cas",label:"Cas d'usage",href:"#/rps"},
+  {key:"comprendre",label:"Comprendre et s'informer",href:"#/rps/comprendre"},
+  {key:"prevenir",label:"Prévenir les RPS",href:"#/rps/prevenir"},
+  {key:"difficiles",label:"Accompagner les situations difficiles",href:"#/rps/difficiles"},
+  {key:"ressources",label:"Ressources complémentaires",href:"#/rps/ressources"}
+];
+function stepperHtml(steps,currentKey){
+  const lis=steps.map(s=>{
+    const cur=s.key===currentKey;
+    return `<li><a href="${s.href}"${cur?' class="current" aria-current="step"':""}>${s.label}</a></li>`;
+  }).join("");
+  return `<nav class="stepper" aria-label="Étapes du parcours"><ol>${lis}</ol></nav>`;
+}
 
 /* =====================================================================
    HELPERS DE RENDU
@@ -486,39 +540,49 @@ function zone(id,label){
   <textarea id="${id}" data-note="${id}">${esc(getNote(id))}</textarea>
   <p class="saved" id="${id}-saved" aria-live="polite"></p>`;
 }
+const TRI_LABEL=["Vide","En cours","Fait"];
+function triCtrl(id,itemLabel){
+  const v=getChk(id);
+  return `<button type="button" class="tri tri-${v}" data-tri="${id}" aria-label="Statut de « ${esc(itemLabel)} » : ${TRI_LABEL[v]}. Cliquer pour changer de statut (vide, en cours, fait)."><span aria-hidden="true"></span></button>`;
+}
 function resTable(ids){
   if(!ids.length) return "";
   const rows=ids.map(id=>{
     const r=RES[id];
+    const typeBadge=r.type&&RES_TYPE_LABEL[r.type]?`<span class="type-badge type-${r.type}">${RES_TYPE_LABEL[r.type]}</span>`:"";
+    const liked=getLike(id);
+    const likeBtn=r.dispo?`<button type="button" class="like${liked?" liked":""}" data-like="${id}" aria-pressed="${liked}" aria-label="${liked?"Retirer « "+esc(r.lib)+" » de mes ressources utiles":"Marquer « "+esc(r.lib)+" » comme utile"}">${ICO.coeurMini}</button>`:"";
     if(r.dispo){
       const lien=r.fiche?`<a href="#/fiche/${r.fiche}">${r.lib}</a>`:(r.href?`<a href="${r.href}" target="_blank" rel="noopener">${r.lib} <span class="visually-hidden">(nouvelle fenêtre)</span></a>`:`<span class="lib">${r.lib}</span>`);
-      return `<tr><td>${lien}</td><td>${r.desc}</td><td><span class="time">${r.time}</span></td></tr>`;
+      return `<tr><td>${lien}${typeBadge}</td><td>${r.desc}</td><td><span class="time">${r.time}</span></td><td>${likeBtn}</td></tr>`;
     }
-    return `<tr class="res-off"><td><span class="lib">${r.lib}</span><span class="badge-off">Non disponible</span></td><td>${r.desc}</td><td><span class="time" style="background:var(--c-fond);color:var(--c-off)">${r.time}</span></td></tr>`;
+    return `<tr class="res-off"><td><span class="lib">${r.lib}</span><span class="badge-off">Non disponible</span>${typeBadge}</td><td>${r.desc}</td><td><span class="time" style="background:var(--c-fond);color:var(--c-off)">${r.time}</span></td><td></td></tr>`;
   }).join("");
   return `<section class="bloc" aria-label="Ressources à ma disposition">
-    <h3>${ICO.doc} Ressources à ma disposition</h3>
+    <h3>${ICO.loupeMini} Ressources à ma disposition</h3>
     <div style="overflow-x:auto"><table class="res">
-      <thead><tr><th scope="col">Ressource</th><th scope="col">Ce qu'elle apporte</th><th scope="col">Durée</th></tr></thead>
+      <thead><tr><th scope="col">Ressource</th><th scope="col">Ce qu'elle apporte</th><th scope="col">Durée</th><th scope="col"><span class="visually-hidden">Marquer comme utile</span></th></tr></thead>
       <tbody>${rows}</tbody></table></div>
   </section>`;
 }
 function ptsList(clId,cl){
   const total=cl.items.length;
-  const done=cl.items.filter((_,i)=>getChk(`${clId}-${i}`)).length;
+  const done=cl.items.filter((_,i)=>getChk(`${clId}-${i}`)===2).length;
   const pct=Math.round(done/total*100);
   const lis=cl.items.map((it,i)=>{
-    const id=`${clId}-${i}`,ok=getChk(id);
-    return `<li class="pt${ok?" done":""}">
-      <input type="checkbox" class="chk" id="chk-${id}" data-chk="${id}" ${ok?"checked":""} aria-label="Marquer « ${esc(it.t)} » comme traité">
-      <span class="t"><a class="tlink" href="#/cl/${clId}/${i}">${it.t}</a></span>
-      <span class="meta"><span class="time">${it.time}</span><a class="detail" href="#/cl/${clId}/${i}">Pour aller plus loin →</a></span>
+    const id=`${clId}-${i}`,lvl=getChk(id),rev=getRevised(id);
+    return `<li class="pt${lvl===2?" done":""}${lvl===1?" inprogress":""}">
+      ${triCtrl(id,it.t)}
+      <span class="t"><a class="tlink" href="#/cl/${clId}/${i}">${it.t}</a>${rev?`<span class="revised">Révisé le ${rev}</span>`:""}</span>
+      <span class="meta"><span class="time">${it.time}</span><a class="detail" href="#/cl/${clId}/${i}">${ICO.loupeMini} Pour aller plus loin</a></span>
     </li>`;
   }).join("");
   return `<div class="progress"><strong>${done} / ${total}</strong> points traités
       <div class="bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Avancement de la checklist"><div style="width:${pct}%"></div></div>
     </div>
-    <ul class="pts">${lis}</ul>`;
+    <ul class="pts">${lis}</ul>
+    <section class="bloc" style="margin-top:1.2rem"><h3>${ICO.crayon} Notes générales sur cette checklist</h3>
+      ${zone(`cl-${clId}-notes`,"Vos observations générales sur cette checklist (sauvegardées automatiquement dans ce navigateur) :")}</section>`;
 }
 
 /* =====================================================================
@@ -535,11 +599,11 @@ const VUES={
       </div>
       <p class="section-label">Par où commencer ?</p>
     <div class="grid g2">
-      <a class="brique bleu" href="#/projet"><span class="ico">${ICO.boussole}</span>
+      <a class="brique bleu" href="#/projet"><img class="brique-illus" src="img/besoinProjet.png" alt="" aria-hidden="true"><span class="ico">${ICO.boussole}</span>
         <h3>J'ai besoin d'intégrer les facteurs humains en amont et pendant le projet</h3>
         <p>Checklists pour moi-même, pour identifier les impacts humains du projet et pour préparer le collectif.</p>
         <span class="cta">Commencer →</span></a>
-      <a class="brique" href="#/rps"><span class="ico">${ICO.coeur}</span>
+      <a class="brique" href="#/rps"><img class="brique-illus" src="img/besoinPrevention.png" alt="" aria-hidden="true"><span class="ico">${ICO.coeur}</span>
         <h3>J'ai besoin de prévenir et d'accompagner les situations de RPS pour mon collectif</h3>
         <p>Comprendre et s'informer, agir en prévention, accompagner et traiter les situations difficiles.</p>
         <span class="cta">Commencer →</span></a>
@@ -547,13 +611,13 @@ const VUES={
   "projet":{titre:"Intégrer les facteurs humains dans le projet",crumbs:[["#/","Accueil"]],render:()=>`
     <h2 class="page">Intégrer les facteurs humains en amont et pendant le projet</h2>
     <div class="grid g3">
-      <a class="brique bleu" href="#/projet/checklists"><span class="ico">${ICO.check}</span>
+      <a class="brique bleu" href="#/projet/checklists"><img class="brique-illus" src="img/besoinProjetConsequent.png" alt="" aria-hidden="true"><span class="ico">${ICO.check}</span>
         <h3>J'ai un projet conséquent</h3><p>Je veux parcourir les questions à se poser pour assurer un accompagnement humain du projet.</p>
         <span class="cta">Voir les 3 checklists →</span></a>
-      <a class="brique bleu" href="#/projet/essentiel"><span class="ico">${ICO.boussole}</span>
+      <a class="brique bleu" href="#/projet/essentiel"><img class="brique-illus" src="img/besoinProjetModeste.png" alt="" aria-hidden="true"><span class="ico">${ICO.boussole}</span>
         <h3>J'ai un projet plus modeste</h3><p>Je veux aller à l'essentiel et identifier les incontournables.</p>
         <span class="cta">Voir l'essentiel →</span></a>
-      <a class="brique bleu" href="#/sommaire"><span class="ico">${ICO.loupe}</span>
+      <a class="brique bleu" href="#/sommaire"><img class="brique-illus" src="img/besoinProjetExplorer.png" alt="" aria-hidden="true"><span class="ico">${ICO.loupe}</span>
         <h3>Je veux explorer</h3><p>Je veux naviguer librement pour trouver les informations qui m'aident.</p>
         <span class="cta">Voir le sommaire →</span></a>
     </div>
@@ -620,34 +684,39 @@ function render(){
   const mIt=hash.match(/^cl\/([a-z]+)\/(\d+)$/);
   const mP2=hash.match(/^rps\/([a-z]+)$/);
   const mF=hash.match(/^fiche\/([a-z-]+)$/);
+  const STEPPER_HASH={"projet":[STEPPER_PROJET,"accueil"],"projet/checklists":[STEPPER_PROJET,"cas"],"rps":[STEPPER_RPS,"cas"]};
 
   if(VUES[hash]){
-    const v=VUES[hash];titre=v.titre;crumbs=v.crumbs;html=v.render();
+    const v=VUES[hash];titre=v.titre;crumbs=v.crumbs;
+    const st=STEPPER_HASH[hash];
+    html=(st?stepperHtml(st[0],st[1]):"")+v.render();
   }else if(mCl&&CL[mCl[1]]){
     const cl=CL[mCl[1]];titre=cl.titre;
     crumbs=[["#/","Accueil"],["#/projet","Facteurs humains projet"],["#/projet/checklists","Checklists"]];
-    html=`<h2 class="page">${cl.titre}</h2><p class="lead">${cl.sousTitre}</p>
+    html=stepperHtml(STEPPER_PROJET,"cl-"+mCl[1])+`<h2 class="page">${cl.titre}</h2><p class="lead">${cl.sousTitre}</p>
       ${ptsList(mCl[1],cl)}${retour("#/projet/checklists","Retour aux checklists")}`;
   }else if(mIt&&CL[mIt[1]]&&CL[mIt[1]].items[+mIt[2]]){
     const clId=mIt[1],i=+mIt[2],cl=CL[clId],it=cl.items[i];
     titre=it.t;crumbs=[["#/","Accueil"],["#/projet","Facteurs humains projet"],[`#/cl/${clId}`,cl.titre]];
-    const noteId=`note-${clId}-${i}`;
-    html=`<h2 class="page">${it.t}</h2>
-      <p class="lead"><span class="time">${it.time}</span></p>
-      <section class="bloc"><h3>${ICO.q} Les questions à se poser</h3>
-        <ul class="q">${it.q.map(q=>`<li>${q}</li>`).join("")}</ul></section>
-      <section class="bloc"><h3>${ICO.crayon} Zone de texte libre</h3>
-        ${zone(noteId,"Vos notes sur ce point (sauvegardées automatiquement dans ce navigateur) :")}</section>
-      ${resTable(it.res)}
-      <div class="bloc" style="display:flex;align-items:center;gap:.8rem">
-        <input type="checkbox" class="chk" id="chk-d-${clId}-${i}" data-chk="${clId}-${i}" ${getChk(`${clId}-${i}`)?"checked":""}>
-        <label for="chk-d-${clId}-${i}" style="font-weight:500">Je marque ce point comme traité</label>
+    const noteId=`note-${clId}-${i}`,statusId=`${clId}-${i}`,rev=getRevised(statusId);
+    const questions=`<section class="bloc quest-card"><h3>${ICO.q} Les questions à se poser</h3>
+        <ul class="q">${it.q.map(q=>`<li>${q}</li>`).join("")}</ul></section>`;
+    const notes=`<section class="bloc"><h3>${ICO.crayon} Zone de texte libre</h3>
+        ${zone(noteId,"Vos notes sur ce point (sauvegardées automatiquement dans ce navigateur) :")}</section>`;
+    const corps=it.res.length
+      ? `<div class="cols">${questions}<div style="display:flex;flex-direction:column;gap:1.1rem">${resTable(it.res)}${notes}</div></div>`
+      : `${questions}${notes}`;
+    html=stepperHtml(STEPPER_PROJET,"res-"+clId)+`<div class="item-head"><h2 class="page">${it.t}</h2><span class="time">${it.time}</span></div>
+      ${corps}
+      <div class="bloc item-status">
+        ${triCtrl(statusId,it.t)}
+        <span>${rev?`Révisé le ${rev}`:"Statut non renseigné pour l'instant"}</span>
       </div>
       ${retour(`#/cl/${clId}`,"Retour à la checklist")}`;
   }else if(mP2&&P2[mP2[1]]){
     const s=P2[mP2[1]];titre=s.titre;crumbs=[["#/","Accueil"],["#/rps","RPS au quotidien"]];
     const noteId=`note-rps-${mP2[1]}`;
-    html=`<h2 class="page">${s.titre}</h2><p class="lead">${s.intro}</p>
+    html=stepperHtml(STEPPER_RPS,mP2[1])+`<h2 class="page">${s.titre}</h2><p class="lead">${s.intro}</p>
       ${s.pts?`<section class="bloc"><h3>${ICO.check} Les points essentiels</h3><ul class="q">${s.pts.map(p=>`<li>${p}</li>`).join("")}</ul></section>`:""}
       ${s.res?resTable(s.res):""}
       <section class="bloc"><h3>${ICO.crayon} Zone de texte libre</h3>
@@ -688,8 +757,11 @@ function bind(){
       },400);
     });
   });
-  $vue.querySelectorAll("input[data-chk]").forEach(c=>{
-    c.addEventListener("change",()=>{setChk(c.dataset.chk,c.checked);render()});
+  $vue.querySelectorAll("button[data-tri]").forEach(b=>{
+    b.addEventListener("click",()=>{cycleChk(b.dataset.tri);render()});
+  });
+  $vue.querySelectorAll("button[data-like]").forEach(b=>{
+    b.addEventListener("click",()=>{toggleLike(b.dataset.like);render()});
   });
   $vue.querySelectorAll("[data-back]").forEach(b=>{
     b.addEventListener("click",()=>history.back());
@@ -711,7 +783,7 @@ $file.addEventListener("change",()=>{
   const r=new FileReader();
   r.onload=()=>{try{
     const d=JSON.parse(r.result);
-    STATE={notes:d.notes||{},checks:d.checks||{}};save();render();
+    STATE={notes:d.notes||{},checks:d.checks||{},likes:d.likes||{},revised:d.revised||{}};save();render();
     alert("Notes importées.");
   }catch(e){alert("Fichier invalide : import impossible.")}};
   r.readAsText(f);$file.value="";
