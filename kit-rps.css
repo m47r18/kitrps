@@ -148,6 +148,9 @@ table.res a:hover{text-decoration:underline}
 .frise .e ul{list-style:none;font-size:.85rem;color:var(--c-texte-2);display:flex;flex-direction:column;gap:.3rem}
 footer.site{background:var(--c-primaire);color:#fff;text-align:center;padding:1.4rem;font-size:.85rem}
 footer.site a{color:#fff}
+footer.site p{margin:0 0 .9rem}
+.footer-legal ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem 1.2rem;margin:0;padding:0}
+.footer-legal a{text-decoration:underline;text-underline-offset:2px}
 
 /* =====================================================================
    AJOUTS V2 — cf. cahier des charges « Expression de besoin » (PPTX)

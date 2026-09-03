@@ -589,6 +589,18 @@ function ptsList(clId,cl){
 /* =====================================================================
    VUES
    ===================================================================== */
+/* Page placeholder pour les liens légaux de pied de page, en attendant leur rédaction */
+function pageEnConstruction(titre){
+  return {titre,crumbs:[["#/","Accueil"]],render:()=>`
+    <h2 class="page">${titre}</h2>
+    <div class="bloc">
+      <p class="lead">Cette page est en cours de construction.</p>
+      <p>Le contenu de « ${titre} » sera ajouté prochainement.</p>
+    </div>
+    <div class="navret">
+      <a class="btn sec" href="#/">${ICO.maison} Accueil</a>
+    </div>`};
+}
 const VUES={
   "":{titre:"Accueil",crumbs:[],render:()=>`
     <div class="home-shell">
@@ -652,7 +664,13 @@ const VUES={
         ${Object.entries(P2).map(([id,s])=>`<li><a class="detail" href="#/rps/${id}">${s.titre}</a></li>`).join("")}</ul></section>
       <section class="bloc"><h3>${ICO.livre} Fiches ressources</h3><ul class="q">
         ${Object.entries(FICHES).map(([id,f])=>`<li><a class="detail" href="#/fiche/${id}">${f.titre}</a></li>`).join("")}</ul></section>
-    </div>`}
+    </div>`},
+  "mentions-legales":pageEnConstruction("Mentions légales"),
+  "confidentialite":pageEnConstruction("Politique de confidentialité"),
+  "cookies":pageEnConstruction("Gestion des cookies"),
+  "cgu":pageEnConstruction("Conditions générales d'utilisation"),
+  "accessibilite":pageEnConstruction("Accessibilité"),
+  "plan-du-site":pageEnConstruction("Plan du site")
 };
 
 /* =====================================================================
