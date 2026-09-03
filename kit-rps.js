@@ -606,11 +606,11 @@ const VUES={
     <div class="home-shell">
       <h2 class="page home-title">Bienvenue, quel est votre besoin ?</h2>
     <div class="grid g2">
-      <a class="brique bleu" href="#/projet"><img class="brique-illus" src="img/besoinProjet.png" alt="" aria-hidden="true"><span class="ico">${ICO.boussole}</span>
+      <a class="brique brique-projet" href="#/projet"><img class="brique-illus" src="img/besoinProjet.png" alt="" aria-hidden="true"><span class="ico">${ICO.boussole}</span>
         <h3>J'ai besoin d'intégrer les facteurs humains en amont et pendant le projet</h3>
         <p>Checklists pour moi-même, pour identifier les impacts humains du projet et pour préparer le collectif.</p>
         <span class="cta">Commencer →</span></a>
-      <a class="brique" href="#/rps"><img class="brique-illus" src="img/besoinPrevention.png" alt="" aria-hidden="true"><span class="ico">${ICO.coeur}</span>
+      <a class="brique brique-rps" href="#/rps"><img class="brique-illus" src="img/besoinPrevention.png" alt="" aria-hidden="true"><span class="ico">${ICO.coeur}</span>
         <h3>J'ai besoin de prévenir et d'accompagner les situations de RPS pour mon collectif</h3>
         <p>Comprendre et s'informer, agir en prévention, accompagner et traiter les situations difficiles.</p>
         <span class="cta">Commencer →</span></a>
