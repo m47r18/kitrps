@@ -122,6 +122,11 @@ table.res a:hover{text-decoration:underline}
 .res-off{color:var(--c-off)}
 .res-off .lib{text-decoration:line-through;text-decoration-thickness:1px}
 .badge-off{display:inline-block;font-size:.72rem;font-weight:700;background:var(--c-off);color:#fff;border-radius:99px;padding:.1rem .6rem;margin-left:.4rem;white-space:nowrap}
+/* ---------- Bouton « Voir toutes les ressources » (disclosure) ---------- */
+.res-toggle>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;background:var(--c-tonal);color:var(--c-primaire);border-radius:4px;padding:.65rem 1.1rem;font-weight:700;font-size:.92rem}
+.res-toggle>summary::-webkit-details-marker{display:none}
+.res-toggle>summary:hover{background:var(--c-tonal-2)}
+.res-toggle[open]>summary{margin-bottom:1.1rem}
 /* ---------- Navigation bas de page ---------- */
 .navret{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.6rem}
 .btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--c-primaire);color:#fff;border:none;border-radius:4px;padding:.65rem 1.1rem;font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none}

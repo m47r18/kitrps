@@ -511,11 +511,8 @@ const STEPPER_PROJET=[
   {key:"accueil",label:"Accueil",href:"#/"},
   {key:"cas",label:"Cas d'usage",href:"#/projet"},
   {key:"cl-moi",label:"Checklist pour moi-même",href:"#/cl/moi"},
-  {key:"res-moi",label:"Ressources pour moi-même",href:"#/cl/moi"},
   {key:"cl-impacts",label:"Checklist des impacts humains",href:"#/cl/impacts"},
-  {key:"res-impacts",label:"Ressources impacts humains",href:"#/cl/impacts"},
-  {key:"cl-collectif",label:"Checklist pour préparer le collectif",href:"#/cl/collectif"},
-  {key:"res-collectif",label:"Ressources préparation collectif",href:"#/cl/collectif"}
+  {key:"cl-collectif",label:"Checklist pour préparer le collectif",href:"#/cl/collectif"}
 ];
 const STEPPER_RPS=[
   {key:"cas",label:"Cas d'usage",href:"#/rps"},
@@ -603,10 +600,16 @@ function ptsList(clId,cl){
       <span class="meta"><span class="time time-ico">${ICO.sablier} ${it.time}</span><a class="detail" href="#/cl/${clId}/${i}">${ICO.loupeMini} Pour aller plus loin</a></span>
     </li>`;
   }).join("");
+  const allResIds=[...new Set(cl.items.flatMap(it=>it.res))];
+  const resSummary=allResIds.length?`<details class="bloc res-toggle">
+    <summary>${ICO.loupeMini} Voir toutes les ressources de cette checklist (${allResIds.length})</summary>
+    ${resTable(allResIds)}
+  </details>`:"";
   return `<div class="progress"><strong>${done} / ${total}</strong> points traités
       <div class="bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Avancement de la checklist"><div style="width:${pct}%"></div></div>
     </div>
     <ul class="pts">${lis}</ul>
+    ${resSummary}
     <section class="bloc" style="margin-top:1.2rem"><h3>${ICO.crayon} Notes générales sur cette checklist</h3>
       ${zone(`cl-${clId}-notes`,"Vos observations générales sur cette checklist (sauvegardées automatiquement dans ce navigateur) :")}</section>`;
 }
@@ -737,7 +740,7 @@ function render(){
     const clId=mIt[1],i=+mIt[2],cl=CL[clId],group=itemGroup(clId,i);
     titre=cl.items[group[0]].t;crumbs=[["#/","Accueil"],["#/projet","Facteurs humains projet"],[`#/cl/${clId}`,cl.titre]];
     const blocks=group.map(idx=>itemBlock(clId,idx)).join(`<hr class="item-sep">`);
-    html=stepperHtml(STEPPER_PROJET,"res-"+clId)+blocks+retour(`#/cl/${clId}`,"Retour à la checklist");
+    html=stepperHtml(STEPPER_PROJET,"cl-"+clId)+blocks+retour(`#/cl/${clId}`,"Retour à la checklist");
   }else if(mP2&&P2[mP2[1]]){
     const s=P2[mP2[1]];titre=s.titre;crumbs=[["#/","Accueil"],["#/rps","RPS au quotidien"]];
     const noteId=`note-rps-${mP2[1]}`;
