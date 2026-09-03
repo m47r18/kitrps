@@ -105,7 +105,9 @@ body.dark .theme-toggle .ico-sun{display:block}
 .toolbar{display:flex;gap:.5rem;flex-wrap:wrap}
 .toolbar button{background:var(--c-primaire-90);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:.5rem .9rem;font:inherit;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:.4rem}
 .toolbar button:hover{background:var(--c-accent)}
+.toolbar button.warn:hover{background:var(--c-proto)}
 .footer-toolbar{justify-content:center;margin:0 0 .9rem}
+.footer-title{font-size:1rem;font-weight:700;margin:0 0 .9rem}
 /* ---------- Fil d'Ariane ---------- */
 nav.crumbs{padding:1rem clamp(1rem,4vw,3.5rem);font-size:.8rem;max-width:1280px;margin:auto}
 nav.crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}

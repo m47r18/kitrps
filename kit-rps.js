@@ -880,9 +880,14 @@ $file.addEventListener("change",()=>{
   r.onload=()=>{try{
     const d=JSON.parse(r.result);
     STATE={notes:d.notes||{},checks:d.checks||{},likes:d.likes||{},revised:d.revised||{}};save();render();
-    alert("Notes importées.");
-  }catch(e){alert("Fichier invalide : import impossible.")}};
+    alert("Données rechargées.");
+  }catch(e){alert("Fichier invalide : chargement impossible.")}};
   r.readAsText(f);$file.value="";
+});
+document.getElementById("btn-new-project").addEventListener("click",()=>{
+  if(confirm("Repartir sur un nouveau projet effacera toutes les notes et cases cochées enregistrées dans ce navigateur (pensez à les sauvegarder avant si besoin). Continuer ?")){
+    STATE={};save();location.hash="#/";render();
+  }
 });
 
 /* Mode sombre / clair */
