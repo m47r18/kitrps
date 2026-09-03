@@ -17,7 +17,8 @@ Prototype web autonome pour aider les managers, chefs de projet, acteurs RH et p
 - Un **marquage « utile »** (like) sur les ressources disponibles, mémorisé dans le navigateur.
 - Un **type de ressource** affiché (fiche recommandation / outil / formation).
 - Une sauvegarde automatique dans le navigateur.
-- L'export et l'import des notes, des statuts, des dates de révision et des ressources marquées utiles, au format JSON.
+- L'export et l'import des notes, des statuts, des dates de révision et des ressources marquées utiles, au format JSON, via deux boutons regroupés en pied de page.
+- Un en-tête allégé (logo, titre et mention **PROTOTYPE**), sans bouton, pour rester lisible sur toutes les pages.
 - Une interface responsive et des éléments d'accessibilité : lien d'évitement, navigation clavier, focus visible et prise en compte de la réduction des animations.
 
 ## Utilisation
@@ -29,7 +30,7 @@ Le projet ne nécessite ni serveur applicatif, ni base de données, ni installat
 3. Choisir un parcours depuis la page d'accueil.
 4. Saisir ses notes et cocher les points traités.
 
-Pour conserver ou transférer son travail, utiliser **Exporter mes notes**. Le fichier JSON obtenu peut ensuite être réimporté avec **Importer**.
+Pour conserver ou transférer son travail, utiliser **Exporter mes notes**, en pied de page. Le fichier JSON obtenu peut ensuite être réimporté avec **Importer**, juste à côté.
 
 ## Lancer en local
 

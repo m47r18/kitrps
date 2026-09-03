@@ -8,14 +8,22 @@
 </head>
 <body>
 <a class="skip-link" href="#vue">Aller au contenu principal</a>
-<p class="proto" role="note">Prototype</p>
 
 <header class="site">
   <a class="brand" href="#/" aria-label="Accueil du kit">
-    <img src="img/logoSNCF.png" alt="" width="40" height="40">
+    <img src="img/logoSNCF.png" alt="" width="32" height="32">
     <h1>Kit d'accompagnement humain<br>et de prévention des RPS</h1>
   </a>
-  <div class="toolbar" role="group" aria-label="Sauvegarde">
+  <p class="proto" role="note">Prototype</p>
+</header>
+
+<nav class="crumbs" aria-label="Fil d'Ariane"><ol id="crumbs"></ol></nav>
+
+<main id="vue" tabindex="-1" aria-live="polite"></main>
+
+<footer class="site">
+  <p>Kit unique pour toutes les sociétés du groupe — managers (DET, DUO, DPX), chefs et porteurs de projets, acteurs RH et préventeurs.</p>
+  <div class="toolbar footer-toolbar" role="group" aria-label="Sauvegarde">
     <button type="button" id="btn-export">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>
       Exporter mes notes
@@ -26,14 +34,6 @@
     </button>
     <input type="file" id="file-import" accept="application/json" class="visually-hidden" aria-hidden="true" tabindex="-1">
   </div>
-</header>
-
-<nav class="crumbs" aria-label="Fil d'Ariane"><ol id="crumbs"></ol></nav>
-
-<main id="vue" tabindex="-1" aria-live="polite"></main>
-
-<footer class="site">
-  <p>Kit unique pour toutes les sociétés du groupe — managers (DET, DUO, DPX), chefs et porteurs de projets, acteurs RH et préventeurs.</p>
   <nav class="footer-legal" aria-label="Informations légales">
     <ul>
       <li><a href="#/mentions-legales">Mentions légales</a></li>

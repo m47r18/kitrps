@@ -42,17 +42,18 @@ body{
 .skip-link:focus{left:0}
 :focus-visible{outline:var(--focus);outline-offset:2px;border-radius:4px}
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-/* ---------- Bandeau prototype ---------- */
-.proto{background:var(--c-proto);color:#fff;text-align:center;font-weight:700;letter-spacing:.18em;padding:.4rem .5rem;font-size:.72rem;text-transform:uppercase}
 /* ---------- En-tête ---------- */
-header.site{background:var(--c-primaire);color:#fff;padding:1.1rem clamp(1rem,4vw,3.5rem);display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between}
-header.site .brand{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:#fff}
+header.site{background:var(--c-primaire);color:#fff;padding:.6rem clamp(1rem,4vw,3.5rem);display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between}
+header.site .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff}
 header.site .brand svg{flex:none;color:#A4C8E1}
 header.site .brand img{flex:none;object-fit:contain}
-header.site h1{font-size:clamp(1rem,2.4vw,1.25rem);font-weight:700;line-height:1.25}
+header.site h1{font-size:clamp(.9rem,2vw,1.1rem);font-weight:700;line-height:1.2}
+/* Bandeau prototype, imbriqué dans l'en-tête */
+.proto{background:var(--c-proto);color:#fff;font-weight:700;letter-spacing:.1em;padding:.35rem .9rem;font-size:1.1rem;text-transform:uppercase;border-radius:4px;flex:none}
 .toolbar{display:flex;gap:.5rem;flex-wrap:wrap}
 .toolbar button{background:var(--c-primaire-90);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:.5rem .9rem;font:inherit;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:.4rem}
 .toolbar button:hover{background:var(--c-accent)}
+.footer-toolbar{justify-content:center;margin:0 0 .9rem}
 /* ---------- Fil d'Ariane ---------- */
 nav.crumbs{padding:1rem clamp(1rem,4vw,3.5rem);font-size:.8rem;max-width:1280px;margin:auto}
 nav.crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
