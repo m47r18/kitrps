@@ -48,6 +48,9 @@ header.site .brand{display:flex;align-items:center;gap:.7rem;text-decoration:non
 header.site .brand svg{flex:none;color:#A4C8E1}
 header.site .brand img{flex:none;object-fit:contain}
 header.site h1{font-size:clamp(.9rem,2vw,1.1rem);font-weight:700;line-height:1.2}
+.header-right{display:flex;align-items:center;gap:.8rem;flex:none}
+.info-link{display:flex;align-items:center;gap:.35rem;color:#fff;text-decoration:none;font-size:.85rem;font-weight:600;opacity:.9;border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:.35rem .8rem}
+.info-link:hover{opacity:1;background:rgba(255,255,255,.12)}
 /* Bandeau prototype, imbriqué dans l'en-tête */
 .proto{background:var(--c-proto);color:#fff;font-weight:700;letter-spacing:.1em;padding:.35rem .9rem;font-size:1.1rem;text-transform:uppercase;border-radius:4px;flex:none}
 .toolbar{display:flex;gap:.5rem;flex-wrap:wrap}
@@ -195,11 +198,13 @@ li.pt.inprogress{background:#FBF3D9}
 .type-badge{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:99px;padding:.1rem .55rem;margin-left:.4rem;background:var(--c-tonal);color:var(--c-primaire);white-space:nowrap}
 .type-badge.type-outil{background:#FBF3D9;color:#9A7600}
 .type-badge.type-formation{background:#E1F5F0;color:var(--c-vert)}
-table.res td:last-child{text-align:center;width:2.4rem}
-button.like{background:none;border:none;color:var(--c-off);cursor:pointer;padding:.2rem;display:inline-flex}
+table.res td:last-child{text-align:center;width:3.4rem}
+button.like{background:none;border:none;color:var(--c-off);cursor:pointer;padding:.2rem .4rem;display:inline-flex;align-items:center;gap:.3rem;border-radius:99px}
+button.like:hover{background:var(--c-tonal)}
 button.like.liked{color:var(--c-proto)}
 button.like svg{fill:none}
 button.like.liked svg{fill:currentColor}
+.like-count{font-size:.8rem;font-weight:700}
 .time-ico{display:inline-flex;align-items:center;gap:.25rem}
 /* ---------- Thématisation par parcours (cf. design-system.md §3) ---------- */
 a.brique.brique-projet{border-top-color:var(--c-vert)}

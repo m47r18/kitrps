@@ -28,20 +28,22 @@ const ICO = {
    href à renseigner plus tard pour les ressources externes.
    ===================================================================== */
 const RES = {
-  gestionProjet:{lib:"Bonnes pratiques de gestion de projet et ressources matérielles",desc:"Bonnes pratiques préventives pour gérer un projet et pour identifier et gérer les ressources matérielles nécessaires au projet",time:"~ 3 min",dispo:true,fiche:"gestion-projet",type:"ficheReco"},
-  resistances:{lib:"Accompagner les résistances au changement",desc:"Recommandations sur comment évaluer et appréhender les risques autour de la résistance au changement",time:"~ 3 min",dispo:false,type:"ficheReco"},
-  relais:{lib:"Les relais humains pour prévenir et accompagner les RPS",desc:"Cartographie des relais pour prévenir et accompagner les RPS : identifier les personnes clés, leurs rôles et leurs contacts pour savoir sur qui s'appuyer",time:"~ 3 min",dispo:true,fiche:"relais",type:"ficheReco"},
-  partiesPrenantes:{lib:"Les parties prenantes sur un projet et comment les embarquer",desc:"Cartographie des différentes parties prenantes sur un projet et bonnes pratiques pour les embarquer",time:"~ 3 min",dispo:true,fiche:"parties-prenantes",type:"ficheReco"},
-  charge:{lib:"Comment aborder la charge de travail avec les équipes",desc:"Recommandations pour aborder la charge de travail pour soi-même et avec les équipes",time:"~ 8 min",dispo:true,fiche:"charge",type:"ficheReco"},
-  powerApps:{lib:"Power Apps RPS",desc:"À utiliser avec votre préventeur qui est habilité à l'outil. Évaluation RPS qui se base sur les questions issues du RH970",time:"~ 1 h",dispo:false,type:"outil"},
-  outilImpacts:{lib:"Outil d'évaluation des impacts humains",desc:"Une trame pour prendre en note toute votre réflexion sur les impacts humains du projet et qui permet une évaluation globale du risque humain sous forme de jauge",time:"~ 15 min",dispo:false,type:"outil"},
-  remontee:{lib:"Outil de remontée d'informations / expression des salariés",desc:"Recueil des interrogations des salariés permettant de faire émerger les dysfonctionnements dans le cadre d'un projet",time:"—",dispo:false,type:"outil"},
-  communication:{lib:"Bonnes pratiques de communication",desc:"Étapes clés pour communiquer durant un projet et bonnes pratiques sur la manière de communiquer",time:"~ 3 min",dispo:true,fiche:"communication",type:"ficheReco"},
-  dialogueSocial:{lib:"Préparation du dialogue social",desc:"Présentation du processus avec les IRP et de la liste des documents à produire, et recommandations sur quand communiquer en lien avec les RS",time:"~ 5 min",dispo:false,type:"ficheReco"},
-  etoile:{lib:"Comment ajuster le cap ensemble pour préserver l'équipe ?",desc:"Outil pour prendre du recul en équipe et identifier collectivement ce qu'il faut continuer, arrêter, faire plus ou moins et commencer",time:"~ 60 min",dispo:true,fiche:"etoile",type:"ficheReco"},
-  formation:{lib:"Formation « Comprendre, évaluer, prendre en charge les RPS pour moi et pour mon collectif de travail »",desc:"De la théorie et des techniques pratiques pour mieux comprendre les RPS et le rôle du manager, savoir repérer les signaux faibles et accompagner un collaborateur en difficulté",time:"~ 1 j",dispo:false,type:"formation"},
-  boiteIdees:{lib:"Boîte à idées pour bâtir un plan d'actions pour améliorer la QVT",desc:"Proposition d'actions simples et rapides sur lesquelles travailler pour améliorer l'organisation du travail et la qualité de vie au travail",time:"~ 3 min",dispo:false,type:"outil"}
+  gestionProjet:{lib:"Bonnes pratiques de gestion de projet et ressources matérielles",desc:"Bonnes pratiques préventives pour gérer un projet et pour identifier et gérer les ressources matérielles nécessaires au projet",time:"~ 3 min",dispo:true,fiche:"gestion-projet",type:"ficheReco",likes:9},
+  resistances:{lib:"Accompagner les résistances au changement",desc:"Recommandations sur comment évaluer et appréhender les risques autour de la résistance au changement",time:"~ 3 min",dispo:false,type:"ficheReco",likes:0},
+  relais:{lib:"Les relais humains pour prévenir et accompagner les RPS",desc:"Cartographie des relais pour prévenir et accompagner les RPS : identifier les personnes clés, leurs rôles et leurs contacts pour savoir sur qui s'appuyer",time:"~ 3 min",dispo:true,fiche:"relais",type:"ficheReco",likes:14},
+  partiesPrenantes:{lib:"Les parties prenantes sur un projet et comment les embarquer",desc:"Cartographie des différentes parties prenantes sur un projet et bonnes pratiques pour les embarquer",time:"~ 3 min",dispo:true,fiche:"parties-prenantes",type:"ficheReco",likes:6},
+  charge:{lib:"Comment aborder la charge de travail avec les équipes",desc:"Recommandations pour aborder la charge de travail pour soi-même et avec les équipes",time:"~ 8 min",dispo:true,fiche:"charge",type:"ficheReco",likes:21},
+  powerApps:{lib:"Power Apps RPS",desc:"À utiliser avec votre préventeur qui est habilité à l'outil. Évaluation RPS qui se base sur les questions issues du RH970",time:"~ 1 h",dispo:false,type:"outil",likes:0},
+  outilImpacts:{lib:"Outil d'évaluation des impacts humains",desc:"Une trame pour prendre en note toute votre réflexion sur les impacts humains du projet et qui permet une évaluation globale du risque humain sous forme de jauge",time:"~ 15 min",dispo:false,type:"outil",likes:0},
+  remontee:{lib:"Outil de remontée d'informations / expression des salariés",desc:"Recueil des interrogations des salariés permettant de faire émerger les dysfonctionnements dans le cadre d'un projet",time:"—",dispo:false,type:"outil",likes:0},
+  communication:{lib:"Bonnes pratiques de communication",desc:"Étapes clés pour communiquer durant un projet et bonnes pratiques sur la manière de communiquer",time:"~ 3 min",dispo:true,fiche:"communication",type:"ficheReco",likes:11},
+  dialogueSocial:{lib:"Préparation du dialogue social",desc:"Présentation du processus avec les IRP et de la liste des documents à produire, et recommandations sur quand communiquer en lien avec les RS",time:"~ 5 min",dispo:false,type:"ficheReco",likes:0},
+  etoile:{lib:"Comment ajuster le cap ensemble pour préserver l'équipe ?",desc:"Outil pour prendre du recul en équipe et identifier collectivement ce qu'il faut continuer, arrêter, faire plus ou moins et commencer",time:"~ 60 min",dispo:true,fiche:"etoile",type:"ficheReco",likes:17},
+  formation:{lib:"Formation « Comprendre, évaluer, prendre en charge les RPS pour moi et pour mon collectif de travail »",desc:"De la théorie et des techniques pratiques pour mieux comprendre les RPS et le rôle du manager, savoir repérer les signaux faibles et accompagner un collaborateur en difficulté",time:"~ 1 j",dispo:false,type:"formation",likes:0},
+  boiteIdees:{lib:"Boîte à idées pour bâtir un plan d'actions pour améliorer la QVT",desc:"Proposition d'actions simples et rapides sur lesquelles travailler pour améliorer l'organisation du travail et la qualité de vie au travail",time:"~ 3 min",dispo:false,type:"outil",likes:0}
 };
+/* Compteur de « J'aime » : nombre factice (pas de backend partagé) additionné du marquage personnel de l'utilisateur */
+function likeCount(id){return (RES[id].likes||0)+(getLike(id)?1:0)}
 /* Légende des types de ressources (cf. besoins fonctionnels, légende diapositive 5) */
 const RES_TYPE_LABEL = {ficheReco:"Fiche recommandation", outil:"Outil", formation:"Formation"};
 
@@ -549,7 +551,7 @@ function resTable(ids){
     const r=RES[id];
     const typeBadge=r.type&&RES_TYPE_LABEL[r.type]?`<span class="type-badge type-${r.type}">${RES_TYPE_LABEL[r.type]}</span>`:"";
     const liked=getLike(id);
-    const likeBtn=r.dispo?`<button type="button" class="like${liked?" liked":""}" data-like="${id}" aria-pressed="${liked}" aria-label="${liked?"Retirer « "+esc(r.lib)+" » de mes ressources utiles":"Marquer « "+esc(r.lib)+" » comme utile"}">${ICO.coeurMini}</button>`:"";
+    const likeBtn=r.dispo?`<button type="button" class="like${liked?" liked":""}" data-like="${id}" aria-pressed="${liked}" aria-label="${liked?"Retirer « "+esc(r.lib)+" » de mes ressources utiles":"Marquer « "+esc(r.lib)+" » comme utile"}">${ICO.coeurMini}<span class="like-count">${likeCount(id)}</span></button>`:"";
     if(r.dispo){
       const lien=r.fiche?`<a href="#/fiche/${r.fiche}">${r.lib}</a>`:(r.href?`<a href="${r.href}" target="_blank" rel="noopener">${r.lib} <span class="visually-hidden">(nouvelle fenêtre)</span></a>`:`<span class="lib">${r.lib}</span>`);
       return `<tr><td>${lien}${typeBadge}</td><td>${r.desc}</td><td><span class="time time-ico">${ICO.sablier} ${r.time}</span></td><td>${likeBtn}</td></tr>`;
@@ -559,7 +561,7 @@ function resTable(ids){
   return `<section class="bloc" aria-label="Ressources à ma disposition">
     <h3>${ICO.loupeMini} Ressources à ma disposition</h3>
     <div style="overflow-x:auto"><table class="res">
-      <thead><tr><th scope="col">Ressource</th><th scope="col">Ce qu'elle apporte</th><th scope="col">Durée</th><th scope="col"><span class="visually-hidden">Marquer comme utile</span></th></tr></thead>
+      <thead><tr><th scope="col">Ressource</th><th scope="col">Ce qu'elle apporte</th><th scope="col">Durée</th><th scope="col">Utile</th></tr></thead>
       <tbody>${rows}</tbody></table></div>
   </section>`;
 }
@@ -692,6 +694,46 @@ const VUES={
         ${Object.entries(P2).map(([id,s])=>`<li><a class="detail" href="#/rps/${id}">${s.titre}</a></li>`).join("")}</ul></section>
       <section class="bloc"><h3>${ICO.livre} Fiches ressources</h3><ul class="q">
         ${Object.entries(FICHES).map(([id,f])=>`<li><a class="detail" href="#/fiche/${id}">${f.titre}</a></li>`).join("")}</ul></section>
+    </div>`},
+  "a-propos":{titre:"À propos du kit",crumbs:[["#/","Accueil"]],render:()=>`
+    <h2 class="page">À propos de ce kit</h2>
+    <p class="lead">Aider les managers et les chefs de projet à prévenir et accompagner les RPS au quotidien, et à développer un accompagnement humain dans les projets, pour tous les types et toutes tailles de projets.</p>
+    <div class="cols">
+      <section class="bloc" aria-labelledby="ap-1">
+        <h3 id="ap-1">${ICO.q} À quoi sert-il ?</h3>
+        <ul class="q">
+          <li>Des check-lists avec les bonnes questions à se poser pour savoir par où commencer et quels sujets regarder pour un accompagnement humain</li>
+          <li>Des ressources par thème et qui contacter pour aller plus loin, si vous le souhaitez ou si vous en avez besoin</li>
+        </ul>
+      </section>
+      <section class="bloc" aria-labelledby="ap-2">
+        <h3 id="ap-2">${ICO.groupe} Pour qui ?</h3>
+        <p>Un kit unique pour toutes les sociétés du groupe. Il s'adresse en priorité aux managers (DET, DUO, DPX) et aux chefs / porteurs de projets. Il est également à disposition des acteurs RH et des préventeurs.</p>
+      </section>
+    </div>
+    <div class="cols">
+      <section class="bloc" aria-labelledby="ap-3">
+        <h3 id="ap-3">${ICO.check} Ce qu'est le kit</h3>
+        <ul class="q">
+          <li>Une aide pour adresser l'essentiel des questions sur le volet humain lorsque l'on a un projet à mener</li>
+          <li>Une incitation à la réflexion et au partage avec le collectif concerné</li>
+          <li>Une opportunité de créer le dialogue et de coconstruire avec les collectifs et les différents contributeurs</li>
+          <li>Une référence commune au niveau du groupe pour soigner le volet humain des projets</li>
+          <li>Un soutien pour évoquer le sujet en toute transparence avec les Organisations Syndicales</li>
+        </ul>
+      </section>
+      <section class="bloc" aria-labelledby="ap-4">
+        <h3 id="ap-4">${ICO.alerte} Ce qu'il n'est pas</h3>
+        <ul class="q">
+          <li>La « recette magique » qui donne des mesures d'accompagnement humain clés en main</li>
+          <li>Un outil administratif dépourvu de sens</li>
+          <li>Il n'amène pas une validation systématique dans les IRP</li>
+          <li>Il ne donne pas un « go / no go » pour lancer le projet, mais il garantit que les questions sur le volet humain ont été instruites en donnant un niveau de risque</li>
+        </ul>
+      </section>
+    </div>
+    <div class="bloc">
+      <p style="margin:0">Les risques psychosociaux (RPS) sont des risques induits par le travail, son organisation ou ses relations, susceptibles d'altérer la santé physique ou mentale des salariés.</p>
     </div>`},
   "mentions-legales":pageEnConstruction("Mentions légales"),
   "confidentialite":pageEnConstruction("Politique de confidentialité"),
