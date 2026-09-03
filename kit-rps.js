@@ -684,9 +684,11 @@ const VUES={
     <h2 class="page">Prévenir et accompagner les situations de RPS pour mon collectif</h2>
     <p class="lead">Les risques psychosociaux (RPS) sont des risques induits par le travail, son organisation ou ses relations, susceptibles d'altérer la santé physique ou mentale des salariés.</p>
     <div class="grid g2">
-      ${Object.entries(P2).map(([id,s])=>`
-      <a class="brique brique-rps" href="#/rps/${id}"><span class="ico">${ICO[s.ico]}</span>
-        <h3>${s.titre}</h3><p>${s.intro}</p><span class="cta">Ouvrir →</span></a>`).join("")}
+      ${Object.entries(P2).filter(([id])=>id!=="ressources").map(([id,s])=>`
+      <div class="brique brique-rps"><a class="brique-cover" href="#/rps/${id}" aria-label="Ouvrir « ${esc(s.titre)} »"></a>
+        <a class="brique-plus" href="#/rps/ressources">${ICO.loupeMini} Pour aller plus loin</a>
+        <span class="ico">${ICO[s.ico]}</span>
+        <h3>${s.titre}</h3><p>${s.intro}</p><span class="cta">Ouvrir →</span></div>`).join("")}
     </div>`},
   "sommaire":{titre:"Sommaire",crumbs:[["#/","Accueil"]],render:()=>`
     <h2 class="page">Explorer librement le kit</h2>

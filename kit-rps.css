@@ -101,17 +101,21 @@ h2.page.home-title{text-align:center;max-width:none;margin:0 0 2.2rem;font-size:
 .grid{display:grid;gap:1.1rem}
 .grid.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .grid.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-a.brique{display:flex;flex-direction:column;gap:.7rem;background:var(--c-carte);border:1px solid var(--sncf-bleu-horizon);border-top:4px solid var(--c-accent);border-radius:4px;padding:1.5rem;text-decoration:none;color:var(--c-texte);box-shadow:0 2px 7px rgba(0,56,101,.08);transition:transform .15s,box-shadow .15s;min-height:205px;position:relative;overflow:hidden}
-a.brique .brique-illus{position:absolute;right:.6rem;top:.4rem;height:76px;width:auto;opacity:.92;pointer-events:none}
-a.brique:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,56,101,.16)}
-a.brique .ico{width:52px;height:52px;border-radius:4px;background:var(--c-accent-clair);display:grid;place-items:center;color:var(--c-accent)}
+.brique{display:flex;flex-direction:column;gap:.7rem;background:var(--c-carte);border:1px solid var(--sncf-bleu-horizon);border-top:4px solid var(--c-accent);border-radius:4px;padding:1.5rem;text-decoration:none;color:var(--c-texte);box-shadow:0 2px 7px rgba(0,56,101,.08);transition:transform .15s,box-shadow .15s;min-height:205px;position:relative;overflow:hidden}
+.brique .brique-illus{position:absolute;right:.6rem;top:.4rem;height:76px;width:auto;opacity:.92;pointer-events:none}
+.brique:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,56,101,.16)}
+.brique .ico{width:52px;height:52px;border-radius:4px;background:var(--c-accent-clair);display:grid;place-items:center;color:var(--c-accent)}
 /* Cartes de choix internes à un parcours (§6.3) : suivent la couleur du parcours actif plutôt qu'un bleu fixe */
-a.brique.bleu{border-color:var(--c-parcours)}
-a.brique.bleu .ico{background:var(--c-parcours-clair);color:var(--c-parcours)}
-a.brique h3{font-size:1.15rem;font-weight:600;color:var(--c-primaire);line-height:1.3}
-a.brique p{font-size:.92rem;color:var(--c-texte-2)}
-a.brique .cta{margin-top:auto;font-size:.85rem;font-weight:600;color:var(--c-accent)}
-a.brique.bleu .cta,a.brique.brique-projet .cta,a.brique.brique-rps .cta{color:var(--c-parcours)}
+.brique.bleu{border-color:var(--c-parcours)}
+.brique.bleu .ico{background:var(--c-parcours-clair);color:var(--c-parcours)}
+.brique h3{font-size:1.15rem;font-weight:600;color:var(--c-primaire);line-height:1.3}
+.brique p{font-size:.92rem;color:var(--c-texte-2)}
+.brique .cta{margin-top:auto;font-size:.85rem;font-weight:600;color:var(--c-accent)}
+.brique.bleu .cta,.brique.brique-projet .cta,.brique.brique-rps .cta{color:var(--c-parcours)}
+/* Brique non cliquable elle-même (div) avec lien étiré + lien coin Pour aller plus loin (rps) */
+.brique-cover{position:absolute;inset:0;z-index:1}
+.brique-plus{position:relative;z-index:2;align-self:flex-end;margin:-.5rem -.7rem .3rem 0;display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;font-weight:600;color:var(--c-parcours);text-decoration:none;background:var(--c-carte);padding:.25rem .6rem;border-radius:99px;box-shadow:0 1px 4px rgba(0,56,101,.15)}
+.brique-plus:hover{text-decoration:underline}
 /* ---------- Liste de points de checklist ---------- */
 ul.pts{list-style:none;display:flex;flex-direction:column;gap:.8rem}
 li.pt{background:var(--c-carte);border:1px solid #D0D3D4;border-left:4px solid var(--c-parcours);border-radius:4px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;box-shadow:0 2px 6px rgba(0,56,101,.06)}
@@ -233,10 +237,10 @@ button.like.liked svg{fill:currentColor}
 .like-count{font-size:.8rem;font-weight:700}
 .time-ico{display:inline-flex;align-items:center;gap:.25rem}
 /* ---------- Thématisation par parcours : bordure fine colorée (design-system-v2.md §6.5) ---------- */
-a.brique.brique-projet{border-color:var(--sncf-menthe)}
-a.brique.brique-projet .ico{background:var(--tint-p1);color:var(--sncf-menthe)}
-a.brique.brique-rps{border-color:var(--sncf-bleu-marine)}
-a.brique.brique-rps .ico{background:var(--tint-p2);color:var(--sncf-bleu-marine)}
+.brique.brique-projet{border-color:var(--sncf-menthe)}
+.brique.brique-projet .ico{background:var(--tint-p1);color:var(--sncf-menthe)}
+.brique.brique-rps{border-color:var(--sncf-bleu-marine)}
+.brique.brique-rps .ico{background:var(--tint-p2);color:var(--sncf-bleu-marine)}
 @media (max-width:760px){
   h2.page{font-size:2.35rem}
   .toolbar{width:100%}
