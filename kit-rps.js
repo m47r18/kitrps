@@ -680,10 +680,6 @@ const VUES={
       <a class="brique bleu" href="#/projet/checklists"><img class="brique-illus" src="img/besoinProjetExplorer.png" alt="" aria-hidden="true"><span class="ico">${ICO.loupe}</span>
         <h3>Je veux explorer</h3><p>Je veux naviguer librement pour trouver les informations qui m'aident.</p>
         <span class="cta">Voir les 3 checklists →</span></a>
-    </div>
-    <div class="bloc" style="margin-top:1.4rem">
-      <h3>${ICO.q} À savoir</h3>
-      <p>Faire l'intégralité des trois checklists et de leurs ressources prend environ <strong>2 jours</strong>. Conseil : vous pouvez sanctuariser un temps dédié en amont du projet si vous souhaitez tout parcourir.</p>
     </div>`},
   "projet/checklists":{titre:"Les 3 checklists",crumbs:[["#/","Accueil"],["#/projet","Facteurs humains projet"]],render:()=>`
     <h2 class="page">Les trois checklists du volet humain</h2>
@@ -692,6 +688,10 @@ const VUES={
       <a class="brique brique-projet" href="#/cl/${id}"><span class="ico">${ICO[cl.ico]}</span>
         <h3>${cl.titre}</h3><p>${cl.sousTitre}</p>
         <span class="cta">${cl.items.length} points · ouvrir →</span></a>`).join("")}
+    </div>
+    <div class="bloc" style="margin-top:1.4rem">
+      <h3>${ICO.q} À savoir</h3>
+      <p>Faire l'intégralité des trois checklists et de leurs ressources prend environ <strong>2 jours</strong>. Conseil : vous pouvez sanctuariser un temps dédié en amont du projet si vous souhaitez tout parcourir.</p>
     </div>`},
   "projet/modeste":pageEnConstruction("L'essentiel pour un projet modeste",[["#/","Accueil"],["#/projet","Facteurs humains projet"]],true),
   "projet/essentiel":{titre:"L'essentiel",crumbs:[["#/","Accueil"],["#/projet","Facteurs humains projet"]],render:()=>`
