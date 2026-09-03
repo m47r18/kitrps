@@ -559,7 +559,7 @@ function resTable(ids){
     return `<tr class="res-off"><td><span class="lib">${r.lib}</span><span class="badge-off">Non disponible</span>${typeBadge}</td><td>${r.desc}</td><td><span class="time time-ico" style="background:var(--c-fond);color:var(--c-off)">${ICO.sablier} ${r.time}</span></td><td></td></tr>`;
   }).join("");
   return `<section class="bloc" aria-label="Ressources à ma disposition">
-    <h3>${ICO.loupeMini} Ressources à ma disposition</h3>
+    <h3 class="res-head">${ICO.loupeMini} Ressources à ma disposition</h3>
     <div style="overflow-x:auto"><table class="res">
       <thead><tr><th scope="col">Ressource</th><th scope="col">Ce qu'elle apporte</th><th scope="col">Durée</th><th scope="col">Utile</th></tr></thead>
       <tbody>${rows}</tbody></table></div>
@@ -674,7 +674,7 @@ const VUES={
     <h2 class="page">Aller à l'essentiel : les incontournables</h2>
     <p class="lead">Les points essentiels des trois checklists, en un coup d'œil. Cochez ce qui est traité ; cliquez sur un point pour ses questions et ressources.</p>
     ${Object.entries(CL).map(([id,cl])=>`
-      <h3 style="color:var(--c-primaire);margin:1.4rem 0 .8rem;display:flex;gap:.5rem;align-items:center"><span style="color:var(--c-accent)">${ICO[cl.ico]}</span>${cl.titre}</h3>
+      <h3 style="color:var(--c-parcours);margin:1.4rem 0 .8rem;display:flex;gap:.5rem;align-items:center"><span style="color:var(--c-parcours)">${ICO[cl.ico]}</span>${cl.titre}</h3>
       ${ptsList(id,cl)}`).join("")}`},
   "rps":{titre:"Prévenir et accompagner les RPS",crumbs:[["#/","Accueil"]],render:()=>`
     <h2 class="page">Prévenir et accompagner les situations de RPS pour mon collectif</h2>

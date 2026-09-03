@@ -1,41 +1,65 @@
 /* =====================================================================
-   CHARTE — variables à ajuster pour coller au thème exact du PPTX.
+   CHARTE — palette et tokens issus de design-system-v2.md (§3 et §10.1).
    Modifier uniquement ce bloc suffit à rethémer tout le site.
    ===================================================================== */
 :root{
-  --c-primaire:#003865;
+  /* Palette officielle Groupe SNCF — ne pas modifier les valeurs (design-system-v2.md §3.2/§10.1) */
+  --sncf-menthe:#00B388;
+  --sncf-vert-eau:#A1D6CA;
+  --sncf-foret:#154734;
+  --sncf-bleu-marine:#00205B;
+  --sncf-bleu-horizon:#A4C8E1;
+  --sncf-ceruleen:#0084D4;
+  --sncf-cobalt:#003865;
+  --sncf-ocre:#DC582A;
+  --sncf-peche:#FDBE87;
+  --sncf-safran:#DAAA00;
+  --sncf-ambre:#EED484;
+  --sncf-mordore:#4A412A;
+  --color-gris-fond:#F2F2F2;
+  --color-text:#333333;
+
+  /* Tints pour grands aplats (design-system-v2.md §10.1) */
+  --tint-p1:color-mix(in srgb, var(--sncf-vert-eau) 30%, white);
+  --tint-p2:color-mix(in srgb, var(--sncf-bleu-horizon) 30%, white);
+  --tint-ambre:color-mix(in srgb, var(--sncf-ambre) 35%, white);
+
+  /* Alias produit — mappage vers la palette officielle (design-system-v2.md §3.3) */
+  --c-primaire:var(--sncf-cobalt);   /* dark blue générique : en-tête, pied de page, titraille neutre */
   --c-primaire-90:#005A91;
-  --c-accent:#0084D4;
-  --c-accent-clair:#E4F2FA;
-  --c-fond:#F3F7F9;
+  --c-accent:var(--sncf-ceruleen);   /* accent neutre : accueil, sommaire, fiches transverses */
+  --c-accent-clair:color-mix(in srgb, var(--sncf-bleu-horizon) 25%, white);
+  --c-fond:color-mix(in srgb, var(--color-gris-fond) 55%, white);
   --c-carte:#FFFFFF;
-  --c-tonal:#E8F1F5;
-  --c-tonal-2:#A4C8E1;
-  --c-texte:#3C3732;
+  --c-tonal:var(--tint-p2);
+  --c-tonal-2:var(--sncf-bleu-horizon);
+  --c-texte:var(--color-text);
   --c-texte-2:#5D6870;
-  --c-ok:#00B388;
-  --c-off:#8B90A0;             /* ressources non disponibles */
-  --c-proto:#DC582A;           /* bandeau prototype */
-  --c-jaune:#DAAA00;
-  --c-vert:#00B388;
-  /* Couleur d'identité de parcours (cf. design-system.md §3) : teal pour le
-     parcours « projet », marine pour le parcours « RPS au quotidien ».
+  --c-ok:var(--sncf-menthe);       /* validation, coché, positif */
+  --c-off:#8B90A0;                 /* ressources non disponibles (texte) */
+  --c-proto:var(--sncf-ocre);      /* bandeau prototype, alertes */
+  --c-jaune:var(--sncf-safran);
+  --c-vert:var(--sncf-menthe);
+  /* Couleur d'identité de parcours (design-system-v2.md §1/§3.3) : Menthe pour le
+     parcours « projet », Bleu Marine pour le parcours « RPS au quotidien ».
      Neutre (accent par défaut) sur l'accueil, le sommaire et les fiches
      transverses. Pilotée via les classes .theme-projet / .theme-rps sur <body>. */
   --c-parcours:var(--c-accent);
   --c-parcours-clair:var(--c-accent-clair);
+  --c-parcours-foncee:var(--c-primaire);  /* bandeau foncé des cartes « Ressources » (§6.7) */
   --r:10px;
-  --focus:3px solid #0084D4;
+  --focus:3px solid var(--sncf-ceruleen);
+  --font-main:"Avenir LT Std",Arial,Helvetica,sans-serif;
   font-size:16px;
 }
-body.theme-projet{--c-parcours:var(--c-vert);--c-parcours-clair:#E1F5F0}
-body.theme-rps{--c-parcours:var(--c-primaire);--c-parcours-clair:var(--c-tonal)}
+body.theme-projet{--c-parcours:var(--sncf-menthe);--c-parcours-clair:var(--tint-p1);--c-parcours-foncee:var(--sncf-foret)}
+body.theme-rps{--c-parcours:var(--sncf-bleu-marine);--c-parcours-clair:var(--tint-p2);--c-parcours-foncee:var(--sncf-bleu-marine)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(135deg,#F3F7F9 0%,#FFFFFF 55%,#E8F1F5 100%);color:var(--c-texte);line-height:1.55;
+  font-family:var(--font-main);
+  background:linear-gradient(135deg,var(--c-fond) 0%,#FFFFFF 55%,var(--c-tonal) 100%);color:var(--c-texte);line-height:1.55;
 }
 /* ---------- Accessibilité ---------- */
 .skip-link{position:absolute;left:-999px;top:0;background:var(--c-primaire);color:#fff;padding:.7rem 1.2rem;z-index:100;border-radius:0 0 var(--r) 0}
@@ -45,7 +69,7 @@ body{
 /* ---------- En-tête ---------- */
 header.site{background:var(--c-primaire);color:#fff;padding:.6rem clamp(1rem,4vw,3.5rem);display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between}
 header.site .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff}
-header.site .brand svg{flex:none;color:#A4C8E1}
+header.site .brand svg{flex:none;color:var(--sncf-bleu-horizon)}
 header.site .brand img{flex:none;object-fit:contain}
 header.site h1{font-size:clamp(.9rem,2vw,1.1rem);font-weight:700;line-height:1.2}
 .header-right{display:flex;align-items:center;gap:.8rem;flex:none}
@@ -67,31 +91,27 @@ nav.crumbs [aria-current]{color:var(--c-texte-2)}
 /* ---------- Structure ---------- */
 main{max-width:1280px;margin:0 auto;padding:0 clamp(1rem,4vw,3.5rem) 5rem}
 main:focus,main:focus-visible{outline:none}
-h2.page{font-family:Arial,Helvetica,sans-serif;font-size:clamp(1.9rem,4vw,3.4rem);font-weight:700;color:var(--c-primaire);margin:.4rem 0 1rem;line-height:1.08;max-width:19ch}
+h2.page{font-family:var(--font-main);font-size:clamp(1.9rem,4vw,3.4rem);font-weight:700;color:var(--c-primaire);margin:.4rem 0 1rem;line-height:1.08;max-width:19ch}
 .lead{font-size:1.05rem;color:var(--c-texte-2);max-width:62ch;margin-bottom:1.6rem}
 .home-shell{padding:clamp(2rem,7vw,5rem) 0 2rem;max-width:1050px}
 .home-shell .lead{font-size:1.15rem;max-width:58ch}
-h2.page.home-title{text-align:center;text-transform:uppercase;max-width:none;margin:0 0 2.2rem;font-size:clamp(1.5rem,2.7vw,2.5rem)}
+h2.page.home-title{text-align:center;max-width:none;margin:0 0 2.2rem;font-size:clamp(1.5rem,2.7vw,2.5rem)}
 @media (min-width:640px){h2.page.home-title{white-space:nowrap}}
 /* ---------- Cartes / briques ---------- */
 .grid{display:grid;gap:1.1rem}
 .grid.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 .grid.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-a.brique{display:flex;flex-direction:column;gap:.7rem;background:var(--c-carte);border:1px solid #D0D3D4;border-top:4px solid var(--c-accent);border-radius:4px;padding:1.5rem;text-decoration:none;color:var(--c-texte);box-shadow:0 2px 7px rgba(0,56,101,.08);transition:transform .15s,box-shadow .15s;min-height:205px;position:relative;overflow:hidden}
+a.brique{display:flex;flex-direction:column;gap:.7rem;background:var(--c-carte);border:1px solid var(--sncf-bleu-horizon);border-top:4px solid var(--c-accent);border-radius:4px;padding:1.5rem;text-decoration:none;color:var(--c-texte);box-shadow:0 2px 7px rgba(0,56,101,.08);transition:transform .15s,box-shadow .15s;min-height:205px;position:relative;overflow:hidden}
 a.brique .brique-illus{position:absolute;right:.6rem;top:.4rem;height:76px;width:auto;opacity:.92;pointer-events:none}
-a.brique:nth-child(3n+2){border-top-color:var(--c-vert)}
-a.brique:nth-child(3n){border-top-color:var(--c-jaune)}
 a.brique:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,56,101,.16)}
 a.brique .ico{width:52px;height:52px;border-radius:4px;background:var(--c-accent-clair);display:grid;place-items:center;color:var(--c-accent)}
-a.brique:nth-child(3n+2) .ico{background:#E1F5F0;color:var(--c-vert)}
-a.brique:nth-child(3n) .ico{background:#FBF3D9;color:#9A7600}
 a.brique.bleu .ico{background:var(--c-tonal);color:var(--c-primaire)}
 a.brique h3{font-size:1.15rem;font-weight:600;color:var(--c-primaire);line-height:1.3}
 a.brique p{font-size:.92rem;color:var(--c-texte-2)}
 a.brique .cta{margin-top:auto;font-size:.85rem;font-weight:600;color:var(--c-accent)}
 /* ---------- Liste de points de checklist ---------- */
 ul.pts{list-style:none;display:flex;flex-direction:column;gap:.8rem}
-li.pt{background:var(--c-carte);border:1px solid #D0D3D4;border-left:4px solid var(--c-accent);border-radius:4px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;box-shadow:0 2px 6px rgba(0,56,101,.06)}
+li.pt{background:var(--c-carte);border:1px solid #D0D3D4;border-left:4px solid var(--c-parcours);border-radius:4px;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;box-shadow:0 2px 6px rgba(0,56,101,.06)}
 li.pt.done{background:var(--c-tonal)}
 li.pt .t{font-weight:500}
 li.pt .meta{display:flex;flex-direction:column;align-items:flex-end;gap:.4rem}
@@ -124,7 +144,7 @@ table.res a{color:var(--c-accent);font-weight:600;text-decoration:none}
 table.res a:hover{text-decoration:underline}
 .res-off{color:var(--c-off)}
 .res-off .lib{text-decoration:line-through;text-decoration-thickness:1px}
-.badge-off{display:inline-block;font-size:.72rem;font-weight:700;background:var(--c-off);color:#fff;border-radius:99px;padding:.1rem .6rem;margin-left:.4rem;white-space:nowrap}
+.badge-off{display:inline-block;font-size:.72rem;font-weight:700;background:var(--sncf-bleu-marine);color:#fff;border-radius:99px;padding:.1rem .6rem;margin-left:.4rem;white-space:nowrap}
 /* ---------- Bouton « Voir toutes les ressources » (disclosure) ---------- */
 .res-toggle>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.45rem;background:var(--c-tonal);color:var(--c-primaire);border-radius:4px;padding:.65rem 1.1rem;font-weight:700;font-size:.92rem}
 .res-toggle>summary::-webkit-details-marker{display:none}
@@ -169,7 +189,7 @@ footer.site p{margin:0 0 .9rem}
    ===================================================================== */
 /* ---------- Parcours fléché (« réglette ») ---------- */
 .stepper{background:var(--c-primaire);overflow-x:auto}
-.stepper ol{list-style:none;display:flex;min-width:max-content;background:#F2F2F2}
+.stepper ol{list-style:none;display:flex;min-width:max-content;background:var(--color-gris-fond)}
 .stepper li{flex:none}
 .stepper a{display:block;padding:.6rem 1.1rem .6rem 1.5rem;margin-left:-.5rem;color:var(--c-texte-2);text-decoration:none;font-size:.78rem;font-weight:600;white-space:nowrap;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%,10px 50%)}
 .stepper li:first-child a{margin-left:0;padding-left:1.1rem;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%)}
@@ -181,36 +201,39 @@ footer.site p{margin:0 0 .9rem}
 .item-head h2.page{margin:0}
 /* ---------- Séparateur entre points regroupés sur une même page ---------- */
 .item-sep{border:none;border-top:2px dashed #D0D3D4;margin:1.8rem 0}
-/* ---------- Carte « questions à se poser » (fond plein, cf. maquette) ---------- */
-.quest-card{background:var(--c-parcours);color:#fff}
-.quest-card h3,.quest-card h3 svg{color:#fff}
-.quest-card ul.q li::before{background:#fff}
+/* ---------- Carte « questions à se poser » : bordure colorée, fond blanc (design-system-v2.md §6.7) ---------- */
+.quest-card{border-color:var(--c-parcours)}
+.quest-card h3,.quest-card h3 svg{color:var(--c-parcours)}
+.quest-card ul.q li::before{background:var(--c-parcours)}
+/* ---------- Bandeau plein foncé de la carte « Ressources à ma disposition » (§6.7) ---------- */
+.res-head{background:var(--c-parcours-foncee);color:#fff;margin:-1.5rem -1.5rem 1.2rem;padding:.9rem 1.5rem;border-radius:4px 4px 0 0;display:flex;align-items:center;justify-content:center;gap:.5rem;text-align:center}
+.res-head svg{color:#fff}
 /* ---------- Statut à 3 niveaux (vide / en cours / fait) ---------- */
 button.tri{width:1.5rem;height:1.5rem;border-radius:6px;border:2px solid var(--c-off);background:#fff;cursor:pointer;flex:none;padding:0;position:relative}
 button.tri span{position:absolute;inset:0}
 button.tri.tri-1{border-color:var(--c-jaune);background:linear-gradient(90deg,var(--c-jaune) 50%,#fff 50%)}
 button.tri.tri-2{border-color:var(--c-ok);background:var(--c-ok)}
 button.tri.tri-2 span::after{content:"";position:absolute;left:.3rem;top:-.02rem;width:.4rem;height:.7rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg)}
-li.pt.inprogress{background:#FBF3D9}
+li.pt.inprogress{background:var(--tint-ambre)}
 .item-status{display:flex;align-items:center;gap:.8rem;font-size:.9rem;color:var(--c-texte-2)}
 .revised{display:block;font-size:.76rem;color:var(--c-texte-2);font-weight:400;margin-top:.15rem}
 /* ---------- Ressources : type et « utile » ---------- */
 .type-badge{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:99px;padding:.1rem .55rem;margin-left:.4rem;background:var(--c-tonal);color:var(--c-primaire);white-space:nowrap}
-.type-badge.type-outil{background:#FBF3D9;color:#9A7600}
-.type-badge.type-formation{background:#E1F5F0;color:var(--c-vert)}
+.type-badge.type-outil{background:var(--tint-ambre);color:var(--sncf-mordore)}
+.type-badge.type-formation{background:var(--tint-p1);color:var(--c-vert)}
 table.res td:last-child{text-align:center;width:3.4rem}
 button.like{background:none;border:none;color:var(--c-off);cursor:pointer;padding:.2rem .4rem;display:inline-flex;align-items:center;gap:.3rem;border-radius:99px}
 button.like:hover{background:var(--c-tonal)}
-button.like.liked{color:var(--c-proto)}
+button.like.liked{color:var(--sncf-safran)}
 button.like svg{fill:none}
 button.like.liked svg{fill:currentColor}
 .like-count{font-size:.8rem;font-weight:700}
 .time-ico{display:inline-flex;align-items:center;gap:.25rem}
-/* ---------- Thématisation par parcours (cf. design-system.md §3) ---------- */
-a.brique.brique-projet{border-top-color:var(--c-vert)}
-a.brique.brique-projet .ico{background:#E1F5F0;color:var(--c-vert)}
-a.brique.brique-rps{border-top-color:var(--c-primaire)}
-a.brique.brique-rps .ico{background:var(--c-tonal);color:var(--c-primaire)}
+/* ---------- Thématisation par parcours : bordure fine colorée (design-system-v2.md §6.5) ---------- */
+a.brique.brique-projet{border-color:var(--sncf-menthe)}
+a.brique.brique-projet .ico{background:var(--tint-p1);color:var(--sncf-menthe)}
+a.brique.brique-rps{border-color:var(--sncf-bleu-marine)}
+a.brique.brique-rps .ico{background:var(--tint-p2);color:var(--sncf-bleu-marine)}
 @media (max-width:760px){
   h2.page{font-size:2.35rem}
   .toolbar{width:100%}
