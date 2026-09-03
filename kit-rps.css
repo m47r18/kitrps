@@ -68,10 +68,10 @@ body{
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* ---------- En-tête ---------- */
 header.site{background:var(--c-primaire);color:#fff;padding:.6rem clamp(1rem,4vw,3.5rem);display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:space-between}
-header.site .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff}
+header.site .brand{display:flex;align-items:center;gap:1rem;text-decoration:none;color:#fff;flex:1 1 auto;min-width:0}
 header.site .brand svg{flex:none;color:var(--sncf-bleu-horizon)}
-header.site .brand img{flex:none;object-fit:contain}
-header.site h1{font-size:clamp(.9rem,2vw,1.1rem);font-weight:700;line-height:1.2}
+header.site .brand img{flex:none;object-fit:contain;width:64px;height:64px}
+header.site h1{flex:1 1 auto;font-size:clamp(1.1rem,2.6vw,1.9rem);font-weight:700;line-height:1.2}
 .header-right{display:flex;align-items:center;gap:.8rem;flex:none}
 .info-link{display:flex;align-items:center;gap:.35rem;color:#fff;text-decoration:none;font-size:.85rem;font-weight:600;opacity:.9;border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:.35rem .8rem}
 .info-link:hover{opacity:1;background:rgba(255,255,255,.12)}
