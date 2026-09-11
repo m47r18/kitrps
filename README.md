@@ -1,4 +1,4 @@
-# Kit d'accompagnement humain et de prévention des RPS
+# Guide d'accompagnement humain et de prévention des RPS
 
 Prototype web autonome pour aider les managers, chefs de projet, acteurs RH et préventeurs à intégrer les facteurs humains dans leurs projets et à prévenir les risques psychosociaux (RPS) au quotidien.
 

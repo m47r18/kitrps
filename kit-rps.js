@@ -808,7 +808,7 @@ function render(){
 
   $vue.innerHTML=html;
   $crumbs.innerHTML=crumbsHtml(crumbs,titre);
-  document.title=(titre==="Accueil"?"":titre+" — ")+"Kit d'accompagnement humain et de prévention des RPS";
+  document.title=(titre==="Accueil"?"":titre+" — ")+"Guide d'accompagnement humain et de prévention des RPS";
   document.body.classList.toggle("theme-projet",hash==="projet"||hash.startsWith("projet/")||hash.startsWith("cl/"));
   document.body.classList.toggle("theme-rps",hash==="rps"||hash.startsWith("rps/"));
   $vue.focus({preventScroll:true});
