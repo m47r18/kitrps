@@ -69,7 +69,7 @@ const CL = {
           "Quels sont les domaines d'expertise sur lesquels j'ai besoin d'un appui sur le projet et quels interlocuteurs solliciter pour y répondre (coach externe…) ?",
           "Comment et à quel moment embarquer les relais humains pour les intégrer efficacement au projet (modalités et délai de sollicitation, éléments de langage…) ?",
           "Est-ce que le management de l'entité concernée est bien embarqué sur le projet ?"],
-       res:["relais","partiesPrenantes","resistances"]},
+       res:["relais","partiesPrenantes"]},
       {t:"Préparer le pilotage du projet (structuration de la gestion de projet, outils, indicateurs, moments de partage / instances…)",time:"~ 2 h",
        q:["Ai-je bien cadré et structuré la gestion de projet (organisation du projet, livrables identifiés, planning et priorisation des actions, indicateurs clés, rituels à mettre en place pour la conduite du projet…) ? Ai-je identifié le niveau d'importance de mes tâches ?",
           "En particulier, quelle gouvernance projet mettre en place (instances du projet, participants et rôle décisionnaire de ces instances…) ?",
@@ -567,7 +567,7 @@ function itemBlock(clId,i){
     ${corps}
     <div class="bloc item-status">
       ${triCtrl(statusId,it.t)}
-      <span>${rev?`Révisé le ${rev}`:"Statut non renseigné pour l'instant"}</span>
+      ${rev?`<span>Révisé le ${rev}</span>`:""}
     </div>`;
 }
 function ptsList(clId,cl){
@@ -635,7 +635,7 @@ const VUES={
   "":{titre:"Accueil",crumbs:[],render:()=>`
     <div class="home-shell">
       <h2 class="page home-title">Bienvenue, quel est votre besoin ?</h2>
-    <div class="grid g2">
+    <div class="grid g3">
       <a class="brique brique-projet" href="#/projet"><img class="brique-illus" src="img/besoinProjet.png" alt="" aria-hidden="true"><span class="ico">${ICO.boussole}</span>
         <h3>J'ai besoin d'intégrer les facteurs humains en amont et pendant le projet</h3>
         <p>Checklists pour moi-même, pour identifier les impacts humains du projet et pour préparer le collectif.</p>
@@ -644,19 +644,20 @@ const VUES={
         <h3>J'ai besoin de prévenir et d'accompagner les situations de RPS pour mon collectif</h3>
         <p>Comprendre et s'informer, agir en prévention, accompagner et traiter les situations difficiles.</p>
         <span class="cta">Commencer →</span></a>
+      <a class="brique" href="#/projet/checklists"><img class="brique-illus" src="img/besoinProjetExplorer.png" alt="" aria-hidden="true"><span class="ico">${ICO.loupe}</span>
+        <h3>Je veux explorer</h3>
+        <p>Je veux naviguer librement dans les checklists et ressources pour trouver ce qui m'aide.</p>
+        <span class="cta">Voir les 3 checklists →</span></a>
       </div></div>`},
   "projet":{titre:"Intégrer les facteurs humains dans le projet",crumbs:[["#/","Accueil"]],render:()=>`
     <h2 class="page">Intégrer les facteurs humains en amont et pendant le projet</h2>
-    <div class="grid g3">
+    <div class="grid g2">
       <a class="brique bleu" href="#/projet/checklists"><img class="brique-illus" src="img/besoinProjetConsequent.png" alt="" aria-hidden="true"><span class="ico">${ICO.check}</span>
         <h3>J'ai un projet conséquent</h3><p>Je veux parcourir les questions à se poser pour assurer un accompagnement humain du projet.</p>
         <span class="cta">Voir les 3 checklists →</span></a>
       <a class="brique bleu" href="#/projet/modeste"><img class="brique-illus" src="img/besoinProjetModeste.png" alt="" aria-hidden="true"><span class="ico">${ICO.boussole}</span>
         <h3>J'ai un projet plus modeste</h3><p>Je veux aller à l'essentiel et identifier les incontournables.</p>
         <span class="cta">Voir l'essentiel →</span></a>
-      <a class="brique bleu" href="#/projet/checklists"><img class="brique-illus" src="img/besoinProjetExplorer.png" alt="" aria-hidden="true"><span class="ico">${ICO.loupe}</span>
-        <h3>Je veux explorer</h3><p>Je veux naviguer librement pour trouver les informations qui m'aident.</p>
-        <span class="cta">Voir les 3 checklists →</span></a>
     </div>`},
   "projet/checklists":{titre:"Les 3 checklists",crumbs:[["#/","Accueil"],["#/projet","Facteurs humains projet"]],render:()=>`
     <h2 class="page">Les trois checklists du volet humain</h2>
