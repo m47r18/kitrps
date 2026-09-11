@@ -224,7 +224,7 @@ const CL = {
 const P2 = {
   comprendre:{titre:"Comprendre et s'informer",ico:"livre",
     intro:"Les points essentiels à réaliser pour développer sa capacité à comprendre les RPS.",
-    pts:["Se questionner sur sa capacité à comprendre, prévenir et accompagner les RPS",
+    pts:["Se questionner sur sa capacité à comprendre, prévenir et accompagner les RPS pour les agents managés en direct ou en transverse",
          "Analyser ses pratiques managériales (réguler ses propres émotions…)",
          "Être sensibilisé et sensibiliser les équipes aux RPS",
          "Situer les experts RPS à solliciter",
