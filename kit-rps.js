@@ -331,31 +331,9 @@ const FICHES = {
   "relais":{
     titre:"Les relais humains pour prévenir et accompagner les RPS",
     credit:"En cours de relecture par les experts spécialisés",
-    html:()=>{
-      const card=(titre,desc,contact)=>`<div class="relais-card bloc" style="margin-bottom:0"><h5>${titre}</h5><p>${desc}</p>${contact?`<p class="contact">${contact}</p>`:""}</div>`;
-      return `
+    html:()=>`
       <p class="lead">Identifier les relais internes sur lesquels vous appuyer au cours d'un projet ou au quotidien, pour prévenir, repérer et accompagner les RPS, et les mobiliser en amont des projets afin d'assurer un soutien efficace aux équipes.</p>
-      <h4 class="fiche-h4" style="color:var(--c-accent);text-transform:uppercase;letter-spacing:.08em;font-size:.85rem;margin:.4rem 0 .7rem">Relais au sein de mon entité</h4>
-      <div class="cols">
-        ${card("Direction","Me guide et me soutient, sécurise les ressources pour conduire le projet, facilite les décisions et relaye la communication projet.")}
-        ${card("Ressources Humaines","Conseille, outille et accompagne sur le volet humain pour identifier et prévenir les RPS, gérer les situations difficiles et orienter vers les bons relais.")}
-        ${card("Préventeur","Aide, conseille et accompagne pour évaluer, prévenir et traiter les situations RPS.")}
-        ${card("Responsable Social (RS)","Me conseille et m'accompagne pour préparer le dialogue social, me connecter aux organisateurs des instances et constituer les dossiers.")}
-      </div>
-      <h4 style="color:var(--c-accent);text-transform:uppercase;letter-spacing:.08em;font-size:.85rem;margin:1.4rem 0 .7rem">Relais spécialisés sur mon territoire</h4>
-      <div class="cols">
-        ${card("Réseau d'appui et de soutien","M'accompagne pour renforcer le dialogue de proximité et prévenir les RPS, me soutient dans la gestion des situations difficiles et m'aide à évaluer les risques humains, structurer des plans d'action, animer des groupes de travail…","Contact à venir")}
-        ${card("Médecine du travail","Offre une écoute confidentielle et une analyse neutre, m'accompagne dans la construction de solutions pour gérer les situations de RPS, et est à embarquer au lancement du projet pour le préparer.","Taper « annuaire médical » dans la barre de l'intranet")}
-        ${card("Pôle de Soutien Psychologique (PSP)","Offre un soutien psychologique aux salariés et aux collectifs de travail exposés à un stress professionnel ou à un événement impactant, et m'accompagne, en tant que manager, dans la gestion des situations préoccupantes et l'accompagnement des agents en difficulté.","Numéro vert unique : <strong>0800 39 17 87</strong><br>Lun-ven : 8 h-18 h · Nuit et week-end si événement grave")}
-        ${card("Action Sociale","Offre un accompagnement confidentiel face aux difficultés personnelles ou de vie, propose un soutien individualisé et familial, m'aide à analyser les situations (difficulté ou arrêt d'un agent), m'oriente vers les bons dispositifs internes ou externes, et est à embarquer au lancement du projet pour le préparer.","Numéro vert : <strong>0800 20 66 20</strong><br>Lun-jeu : 9 h-17 h · Ven et veilles de fêtes : 9 h-16 h<br><a href='mailto:action.sociale@sncf.fr'>action.sociale@sncf.fr</a>")}
-      </div>
-      <h4 style="color:var(--c-accent);text-transform:uppercase;letter-spacing:.08em;font-size:.85rem;margin:1.4rem 0 .7rem">Relais complémentaires en territoire</h4>
-      <div class="cols">
-        ${card("ATM — Agences Territoriales de la Mobilité","Me conseille dès l'amont des réorganisations et m'accompagne pour repositionner les salariés impactés.")}
-        ${card("Médiateurs","Facilitent, en tant que tiers neutre, le dialogue lors de tensions interpersonnelles et m'aident à résoudre le conflit et à reprendre le travail dans un contexte relationnel apaisé.")}
-        ${card("Coachs internes","M'aident à renforcer mes compétences relationnelles et managériales pour prévenir les RPS et agir efficacement.","SharePoint Coaching DPML")}
-      </div>`;
-    }
+      <img class="fiche-img" src="img/relais-rps.png" alt="Schéma des relais humains pour prévenir et accompagner les RPS : relais au sein de mon entité (direction, préventeur, ressources humaines, responsable social), relais spécialisés sur mon territoire (réseau d'appui et de soutien, pôle de soutien psychologique, action sociale, médecine du travail) et relais complémentaires en territoire (ATM, médiateurs, coachs internes).">`
   },
   "charge":{
     titre:"Aborder la charge de travail avec les équipes",
@@ -569,9 +547,8 @@ function resTable(ids){
   </section>`;
 }
 /* Regroupements de points d'une checklist affichés sur une même page,
-   quand la maquette PPTX ne consacre pas de diapositive dédiée à chacun
-   (ex. « moi » : les points 1 et 2 partagent une seule page, slides 17-18). */
-const ITEM_GROUPS={moi:[[0,1],[2],[3],[4]]};
+   quand la maquette PPTX ne consacre pas de diapositive dédiée à chacun. */
+const ITEM_GROUPS={};
 function itemGroup(clId,i){
   const g=(ITEM_GROUPS[clId]||[]).find(g=>g.includes(i));
   return g||[i];
