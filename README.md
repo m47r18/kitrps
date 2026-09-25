@@ -1,27 +1,60 @@
 # Guide d'accompagnement humain et de prévention des RPS
 
-Prototype web autonome pour aider les managers, chefs de projet, acteurs RH et préventeurs à intégrer les facteurs humains dans leurs projets et à prévenir les risques psychosociaux (RPS) au quotidien.
+Prototype web autonome (HTML/CSS/JS, aucune dépendance externe) pour aider les managers, chefs de projet, acteurs RH et préventeurs à intégrer les facteurs humains dans leurs projets et à prévenir les risques psychosociaux (RPS) au quotidien.
+
+## Sommaire
+
+- [Fonctionnalités](#fonctionnalités)
+- [Utilisation](#utilisation)
+- [Lancer en local](#lancer-en-local)
+- [Mise en ligne sur GitHub Pages](#mise-en-ligne-sur-github-pages)
+- [Données et confidentialité](#données-et-confidentialité)
+- [Structure du projet](#structure-du-projet)
+- [Architecture applicative](#architecture-applicative)
+- [Statut](#statut)
+- [Points de doute et arbitrages à valider](#points-de-doute-et-arbitrages-à-valider)
+- [Licence](#licence)
 
 ## Fonctionnalités
 
-- Trois check-lists pour intégrer les facteurs humains dans un projet :
-  - la check-list pour soi-même ;
-  - l'identification des impacts humains du projet ;
-  - la préparation du collectif aux impacts du projet.
-- Un parcours dédié à la prévention et à l'accompagnement des situations de RPS.
-- Des fiches pratiques sur la gestion de projet, les parties prenantes, la charge de travail, la communication, les relais humains et l'ajustement collectif du cap.
-- Des questions de réflexion et des zones de notes libres, à la fois sur chaque point d'une check-list et sur la check-list dans son ensemble.
-- Un bouton **« Voir toutes les ressources de cette checklist »** sur chaque page de check-list, regroupant en un seul endroit les ressources de tous ses points.
-- Un **parcours fléché** (bandeau d'étapes en haut de page) sur les pages « Facteurs humains projet » et « RPS au quotidien », reproduisant le repérage visuel de la maquette du cahier des charges : chaque étape est cliquable et ramène en un clic à n'importe quel point du parcours.
-- Une **couleur d'identité par parcours** (Menthe `#00B388` pour « Facteurs humains projet », Bleu Marine `#00205B` pour « RPS au quotidien »), appliquée au bandeau d'étapes, aux cartes de choix, à l'en-tête d'un point de check-list et au bandeau des cartes de ressources, conformément au principe décrit dans `design-system-v2.md` (« la couleur d'accent change selon le parcours actif »). Les fiches ressources restent neutres car elles sont transverses aux deux parcours.
-- Une progression par check-list avec un **statut à 3 niveaux** par point (vide / en cours / fait), ainsi qu'une date de dernière révision affichée automatiquement.
-- Un **compteur « J'aime »** sur chaque ressource disponible, combinant un nombre de départ factice (pas de backend partagé entre utilisateurs) et le marquage personnel de l'utilisateur, mémorisé dans le navigateur.
+### Deux parcours, une page d'accueil
+
+- Une page d'accueil (« Bienvenue, quel est votre besoin ? ») qui oriente vers l'un des deux parcours, ou vers une exploration libre des trois checklists.
+- **Parcours « Intégrer les facteurs humains dans le projet »** (couleur Menthe `#00B388`) : trois checklists (pour soi-même, impacts humains du projet, préparation du collectif), une entrée « projet conséquent » vs « projet plus modeste », et une page « Je veux explorer ».
+- **Parcours « Prévenir et accompagner les RPS au quotidien »** (couleur Bleu Marine `#00205B`) : trois sections (Comprendre et s'informer, Agir pour prévenir, Accompagner les situations difficiles) et une page de ressources complémentaires.
+- Une **couleur d'identité par parcours**, appliquée au bandeau d'étapes, aux cartes de choix, à l'en-tête d'un point de check-list et au bandeau des cartes de ressources, conformément au principe décrit dans [design-system-v2.md](design-system-v2.md) (« la couleur d'accent change selon le parcours actif »). Les fiches ressources restent neutres car elles sont transverses aux deux parcours.
+- Une page **« Sommaire »** (`#/sommaire`) qui liste, en un seul endroit, les trois checklists, les trois sections RPS et toutes les fiches ressources.
+- Une page **« À propos »** (`#/a-propos`), accessible depuis un lien discret en en-tête, présentant à quoi sert le kit, à qui il s'adresse et ce qu'il est / n'est pas.
+
+### Checklists et suivi de progression
+
+- Trois checklists pour le parcours projet, chacune avec plusieurs points ; chaque point a sa propre page de détail (questions à se poser, ressources, notes).
+- Un **parcours fléché** (bandeau d'étapes cliquable en haut de page) sur les pages du parcours projet et RPS, reproduisant le repérage visuel de la maquette du cahier des charges.
+- Un **statut à 3 niveaux** par point (vide / en cours / fait), avec barre de progression par checklist et une **date de dernière révision** affichée automatiquement.
+- Un bouton **« Voir toutes les ressources de cette checklist »** (dépliant) sur chaque page de checklist, regroupant en un seul endroit les ressources de tous ses points.
+- Une page **« L'essentiel »** qui regroupe les points de toutes les checklists en un coup d'œil, pour les projets modestes.
+- Une checklist à cocher (sans sous-page) sur les sections « Comprendre et s'informer » et « Agir pour prévenir » du parcours RPS.
+
+### Ressources
+
+- Un tableau de **ressources** par point de checklist et par section RPS : intitulé, description, durée estimée, et disponibilité (`dispo:true/false`).
 - Un **type de ressource** affiché (fiche recommandation / outil / formation).
-- Une page **« À propos »**, accessible depuis un lien discret en en-tête, présentant à quoi sert le kit, à qui il s'adresse et ce qu'il est / n'est pas.
-- Une sauvegarde automatique dans le navigateur.
-- L'export et l'import des notes, des statuts, des dates de révision et des ressources marquées utiles, au format JSON, via deux boutons regroupés en pied de page.
-- Un en-tête allégé (logo, titre et mention **PROTOTYPE**), sans bouton, pour rester lisible sur toutes les pages.
-- Une interface responsive et des éléments d'accessibilité : lien d'évitement, navigation clavier, focus visible et prise en compte de la réduction des animations.
+- Un **compteur « J'aime »** sur chaque ressource disponible, combinant un nombre de départ factice (pas de backend partagé entre utilisateurs) et le marquage personnel de l'utilisateur, mémorisé dans le navigateur.
+- Six **fiches ressources** détaillées et illustrées (gestion de projet, parties prenantes, relais humains, charge de travail, communication de projet, outil « ajuster le cap ensemble »), accessibles depuis les tableaux de ressources ou depuis le sommaire.
+
+### Personnalisation et confort de lecture
+
+- Un **mode sombre / clair**, avec bouton de bascule en en-tête, mémorisé dans le navigateur (respecte par défaut la préférence système `prefers-color-scheme`).
+- Une interface responsive et des éléments d'accessibilité : lien d'évitement, navigation clavier, focus visible, rôles ARIA sur les barres de progression et le fil d'Ariane, et prise en compte de la réduction des animations.
+- Un en-tête allégé (logo, titre, lien « À propos », bouton de mode sombre, mention **PROTOTYPE**).
+- Un fil d'Ariane (breadcrumb) rappelant en permanence le chemin parcouru.
+
+### Sauvegarde des données
+
+- Une sauvegarde automatique dans le `localStorage` du navigateur (notes, statuts, dates de révision, ressources marquées utiles, préférence de thème).
+- L'export (**« Sauvegarder mes données »**) et l'import (**« Recharger mes données »**) des notes, statuts, dates de révision et ressources marquées utiles, au format JSON, via deux boutons regroupés en pied de page.
+- Un bouton **« Nouveau projet »**, en pied de page, qui efface toutes les données locales après confirmation — pour repartir de zéro sur un autre projet.
+- Un pied de page avec des liens légaux (mentions légales, politique de confidentialité, gestion des cookies, CGU, accessibilité, plan du site) : ces pages sont pour l'instant des pages « en construction », à compléter avant une mise en production.
 
 ## Utilisation
 
@@ -30,9 +63,9 @@ Le projet ne nécessite ni serveur applicatif, ni base de données, ni installat
 1. Télécharger ou cloner le dépôt.
 2. Ouvrir `index.html` dans un navigateur récent.
 3. Choisir un parcours depuis la page d'accueil.
-4. Saisir ses notes et cocher les points traités.
+4. Saisir ses notes et cocher les points traités (clic sur la pastille de statut : vide → en cours → fait).
 
-Pour conserver ou transférer son travail, utiliser **Exporter mes notes**, en pied de page. Le fichier JSON obtenu peut ensuite être réimporté avec **Importer**, juste à côté.
+Pour conserver ou transférer son travail, utiliser **Sauvegarder mes données**, en pied de page. Le fichier JSON obtenu peut ensuite être réimporté avec **Recharger mes données**, juste à côté. Le bouton **Nouveau projet** efface les données locales après confirmation.
 
 ## Lancer en local
 
@@ -56,29 +89,42 @@ Le projet étant un site statique, il peut être publié directement avec GitHub
 
 ## Données et confidentialité
 
-Les notes et les cases cochées sont enregistrées uniquement dans le `localStorage` du navigateur utilisé. Elles ne sont envoyées vers aucun serveur par ce prototype.
+Les notes, statuts, dates de révision, ressources marquées utiles et la préférence de thème sont enregistrés uniquement dans le `localStorage` du navigateur utilisé. Rien n'est envoyé vers un serveur par ce prototype (pas de backend, pas de compte utilisateur).
 
-L'export JSON contient les notes, l'avancement des check-lists et la date d'export. Il peut contenir des informations sensibles : le conserver et le partager avec précaution.
+L'export JSON contient les notes, l'avancement des checklists, les ressources marquées utiles et la date d'export. Il peut contenir des informations sensibles : le conserver et le partager avec précaution.
 
-Effacer les données du site dans les paramètres du navigateur supprime les données locales. Il est recommandé d'exporter régulièrement son travail.
+Effacer les données du site dans les paramètres du navigateur (ou utiliser le bouton **Nouveau projet**) supprime les données locales. Il est recommandé d'exporter régulièrement son travail.
 
 ## Structure du projet
 
 ```text
 .
-├── index.html         # Structure de la page et point d'entrée
-├── kit-rps.css        # Styles, responsive et accessibilité visuelle
-├── kit-rps.js         # Contenus, navigation, rendu et sauvegarde locale
-├── img/               # Logo SNCF et illustrations utilisées sur les pages de choix
-├── design-system-v2.md # Référentiel visuel unique : maquette produit fusionnée avec la charte officielle Groupe SNCF
-└── README.md          # Documentation du projet
+├── index.html            # Structure de la page (en-tête, fil d'Ariane, zone de rendu, pied de page) et point d'entrée
+├── kit-rps.css            # Variables de thème, styles, responsive et accessibilité visuelle
+├── kit-rps.js             # Contenus (RES, CL, P2, FICHES), routeur, rendu des vues, état local et interactions
+├── img/                   # Logos SNCF (PNG/SVG) et illustrations des cartes de choix
+├── design-system-v2.md    # Référentiel visuel unique : maquette produit fusionnée avec la charte officielle Groupe SNCF
+└── README.md              # Documentation du projet
 ```
 
-Le contenu éditorial est centralisé dans les objets `RES`, `CL`, `P2` et `FICHES` du fichier `kit-rps.js`. Les styles principaux sont regroupés dans les variables CSS au début de `kit-rps.css`.
+## Architecture applicative
+
+`kit-rps.js` est une petite application à page unique (SPA) sans framework, routée par le fragment d'URL (`location.hash`) :
+
+- **`ICO`** : pictogrammes SVG inline réutilisables.
+- **`RES`** : dictionnaire des ressources (libellé, description, durée, disponibilité, type, nombre de « J'aime » factice), référencées par identifiant depuis les checklists et sections RPS.
+- **`CL`** : les trois checklists du parcours projet (`moi`, `impacts`, `collectif`), chacune avec ses points, questions et ressources associées.
+- **`P2`** : les sections du parcours RPS au quotidien (`comprendre`, `prevenir`, `difficiles`, `ressources`).
+- **`FICHES`** : les six fiches ressources détaillées (contenu HTML généré par fonction), affichées via la route `#/fiche/<id>`.
+- **`STATE`** (dans `localStorage`, clé `kit-rps-v1`) : notes, statuts à 3 niveaux, dates de révision et ressources aimées ; persistée à chaque modification.
+- **`VUES`** et le routeur (`render()`) : associent chaque route (`#/…`) à un titre, un fil d'Ariane et une fonction de rendu ; les routes dynamiques (`#/cl/<id>`, `#/cl/<id>/<index>`, `#/rps/<id>`, `#/fiche/<id>`) sont résolues par expression régulière.
+- Le mode sombre/clair est géré indépendamment de l'état applicatif, dans `localStorage` (clé `kit-rps-theme`).
+
+Le contenu éditorial est donc centralisé dans `kit-rps.js` (objets `RES`, `CL`, `P2`, `FICHES`) ; les styles et les variables de couleur/thème sont regroupés en tête de `kit-rps.css`.
 
 ## Statut
 
-Ce projet est un **prototype**. Certaines ressources sont indiquées comme non disponibles ou en cours de relecture. Les informations et coordonnées affichées doivent être vérifiées avant un usage opérationnel.
+Ce projet est un **prototype**. Certaines ressources sont indiquées comme non disponibles (`dispo:false`) ou en cours de relecture. Les pages légales du pied de page (mentions légales, confidentialité, cookies, CGU, accessibilité, plan du site) sont des pages « en construction ». Les informations et coordonnées affichées doivent être vérifiées avant un usage opérationnel.
 
 ## Points de doute et arbitrages à valider
 
@@ -91,7 +137,7 @@ Le fichier *« 260903 - Démarche Acc Humain & Prév RPS - Slides kit pour maque
 - **Couleurs alignées sur la palette officielle Groupe SNCF, plus des estimations de maquette.** `design-system-v2.md` remplace les couleurs approximatives d'une première extraction de maquette par leurs équivalents officiels exacts (table de correspondance §3.3). `kit-rps.css` a été retouché en conséquence : les variables produit (`--c-primaire`, `--c-accent`, `--c-vert`…) pointent désormais vers la palette officielle (`--sncf-cobalt`, `--sncf-ceruleen`, `--sncf-menthe`…), le parcours « RPS au quotidien » utilise désormais le Bleu Marine officiel `#00205B` (distinct du Cobalt `#003865` conservé comme bleu neutre de l'en-tête/pied de page), et les bordures des cartes de choix reprennent le Bleu Horizon `#A4C8E1` prescrit par la charte. Le succès/validation (`--c-ok`) et l'identité du parcours « projet » (`--c-vert`) restent volontairement la même teinte Menthe, conformément à `design-system-v2.md` §3.4 (« Menthe cumule le rôle d'accent Parcours 1 et de couleur de succès »).
 - **Composants de `design-system-v2.md` non repris.** Certains composants décrits (pages de transition avec bandeau vertical plein écran, diagrammes en swimlanes, timelines illustrées) correspondent à des écrans de couverture/transition qui n'ont pas d'équivalent dans l'architecture actuelle du site (accueil, cas d'usage, check-lists, fiches). Ils n'ont pas été ajoutés pour ne pas créer de nouvelles pages non demandées par le cahier des charges fonctionnel.
 - **Sauvegarde en ligne et multi-appareils.** Le cahier des charges demande que les notes/statuts soient retrouvés « d'une connexion à l'autre » et que la solution technique soit proposée par la DSI. Ce prototype reste **local au navigateur** (`localStorage`), sans compte utilisateur ni backend : aucune solution de stockage en ligne n'a été inventée, faute d'architecture (authentification, hébergement, base de données) définie.
-- **Plusieurs « versions » ouvertes en simultané, ouverture/fermeture/transfert d'une version, travail collaboratif en temps réel.** Ces besoins (diapositive 5) supposent un backend multi-utilisateurs explicitement présenté comme à concevoir par la DSI. Non implémentés ici.
+- **Plusieurs « versions » ouvertes en simultané, ouverture/fermeture/transfert d'une version, travail collaboratif en temps réel.** Ces besoins (diapositive 5) supposent un backend multi-utilisateurs explicitement présenté comme à concevoir par la DSI. Non implémentés ici ; le bouton **« Nouveau projet »** ajouté permet seulement de repartir d'un état vide localement, pas de gérer plusieurs versions en parallèle.
 - **« Mécanisme de suivi de l'avancement (date de révision) ».** Interprété a minima, côté navigateur uniquement, par une date de dernière modification par point (affichée « Révisé le JJ/MM/AAAA »). Un véritable historique/audit partagé entre utilisateurs nécessite le backend ci-dessus.
 - **« Like » sur les ressources.** Le compteur affiché combine un nombre de départ factice (saisi en dur dans le code, à titre d'exemple) et le marquage personnel de chaque utilisateur (mémorisé dans son navigateur). Il ne s'agit pas d'un compteur de popularité réellement agrégé entre utilisateurs, ce qui nécessiterait un backend partagé non défini à ce stade.
 - **Type de ressource (Fiche recommandation / Outil / Formation).** La diapositive 5 définit ces trois catégories mais ne précise pas le type de chacune des ressources déjà existantes qui ne sont pas encore disponibles (`dispo:false`). Le type affiché pour ces ressources a été déduit du libellé/de la description (ex. « Power Apps RPS » → Outil, « Formation … » → Formation) : à confirmer par l'équipe RPS.
@@ -103,7 +149,8 @@ Le fichier *« 260903 - Démarche Acc Humain & Prév RPS - Slides kit pour maque
 - **Formats enrichis (vidéo, audio, images).** Demandés diapositive 4 pour illustrer les pages. Le dossier `img/` fourni (logo SNCF et illustrations « besoin ») a été intégré à l'en-tête et aux cartes de choix (accueil et « Cas d'usage »). Aucune vidéo ni piste audio n'ayant été fournie pour le contenu réel (ex. questions à se poser), cette partie du besoin n'a pas été simulée avec des exemples inventés.
 - **Charte graphique officielle et éléments visuels du fichier PPTX.** Les couleurs du thème du PPTX (`#003865`, `#0084D4`, `#00B388`, `#DC582A`…) correspondent à des couleurs de la palette officielle Groupe SNCF (respectivement Cobalt, Céruléen, Menthe, Ocre) : elles ont été conservées et rattachées à cette palette dans `kit-rps.css`. Le Forêt officiel `#154734` (cité en couleur de bouton dans la maquette) est repris pour le bandeau foncé des cartes « Ressources à ma disposition » du parcours « Facteurs humains projet » (`design-system-v2.md` §6.7). Les illustrations décoratives de la maquette d'origine restent hors charte et n'ont pas été reproduites.
 - **Accessibilité mobile du bandeau d'étapes.** La maquette est fournie dans un format fixe 1280 × 720 (desktop). Le comportement du bandeau en dessous de cette largeur (défilement horizontal) est une adaptation nécessaire, non spécifiée par le cahier des charges.
-- **Sécurité, RGPD, hébergement, maintenance SI.** La diapositive 6 indique explicitement plusieurs points « à définir » (qui maintient l'outil, où l'héberger, qui peut contribuer à un même kit). Ce prototype front-end seul ne peut pas répondre à ces questions ; elles restent entièrement à traiter par la DSI.
+- **Mode sombre.** Non demandé explicitement par le cahier des charges, mais ajouté comme confort de lecture standard ; à valider auprès de l'équipe RPS/DSI avant mise en production, notamment sur le respect des contrastes de la palette officielle en mode sombre.
+- **Sécurité, RGPD, hébergement, maintenance SI.** La diapositive 6 indique explicitement plusieurs points « à définir » (qui maintient l'outil, où l'héberger, qui peut contribuer à un même kit). Ce prototype front-end seul ne peut pas répondre à ces questions ; elles restent entièrement à traiter par la DSI. Les pages légales du pied de page (mentions légales, confidentialité, cookies, CGU, accessibilité, plan du site) sont volontairement laissées « en construction » tant que ces arbitrages ne sont pas faits.
 
 ## Licence
 
